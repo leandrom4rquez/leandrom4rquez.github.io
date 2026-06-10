@@ -4,19 +4,24 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Leandro Nahuel Marquez</title>
+<title>Leandro Nahuel Marquez — AI, Simulation & Interactive Software</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
 
 :root{
     --bg:#050505;
-    --panel:#0d0d0d;
-    --border:#1c1c1c;
-    --text:#f5f5f5;
-    --muted:#8f8f8f;
+    --bg2:#090909;
+    --panel:#0f0f0f;
+    --border:#1a1a1a;
+    --border2:#242424;
+    --text:#f6f6f6;
+    --muted:#8c8c8c;
+    --accent:#ffffff;
+    --max:1400px;
 }
 
 *{
@@ -25,10 +30,26 @@
     box-sizing:border-box;
 }
 
+html{
+    scroll-behavior:smooth;
+}
+
 body{
     background:var(--bg);
     color:var(--text);
     font-family:Inter,sans-serif;
+    overflow-x:hidden;
+}
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    background:
+    radial-gradient(circle at 20% 20%, rgba(255,255,255,.05), transparent 35%),
+    radial-gradient(circle at 80% 0%, rgba(255,255,255,.03), transparent 30%);
+    z-index:-1;
 }
 
 a{
@@ -36,9 +57,45 @@ a{
     text-decoration:none;
 }
 
+img{
+    display:block;
+}
+
 .container{
-    width:min(1200px,90%);
+    width:min(var(--max),92%);
     margin:auto;
+}
+
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:999;
+    backdrop-filter:blur(20px);
+    background:rgba(5,5,5,.65);
+    border-bottom:1px solid rgba(255,255,255,.05);
+}
+
+.nav-inner{
+    height:80px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo{
+    font-size:.9rem;
+    font-weight:700;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+}
+
+.nav-links{
+    display:flex;
+    gap:40px;
+    color:var(--muted);
+    font-size:.95rem;
 }
 
 .hero{
@@ -52,14 +109,12 @@ a{
     content:"";
     position:absolute;
     inset:0;
-
     background:
     linear-gradient(
     rgba(5,5,5,.55),
-    rgba(5,5,5,.90)
+    rgba(5,5,5,.92)
     ),
     url("images/hero.jpg");
-
     background-size:cover;
     background-position:center;
 }
@@ -67,33 +122,50 @@ a{
 .hero-content{
     position:relative;
     z-index:2;
-    max-width:900px;
+    max-width:1050px;
+}
+
+.eyebrow{
+    margin-bottom:25px;
+    color:#bdbdbd;
+    letter-spacing:.25em;
+    text-transform:uppercase;
+    font-size:.8rem;
 }
 
 .hero h1{
-    font-size:clamp(4rem,10vw,8rem);
-    line-height:.95;
-    font-weight:800;
-    letter-spacing:-4px;
+    font-size:clamp(4rem,10vw,9rem);
+    line-height:.9;
+    font-weight:900;
+    letter-spacing:-6px;
+    max-width:1200px;
 }
 
 .hero p{
-    margin-top:30px;
-    font-size:1.3rem;
+    margin-top:35px;
+    max-width:760px;
+    font-size:1.35rem;
+    line-height:1.7;
     color:var(--muted);
-    max-width:650px;
 }
 
 .buttons{
-    margin-top:40px;
     display:flex;
-    gap:15px;
+    gap:16px;
+    flex-wrap:wrap;
+    margin-top:50px;
 }
 
 .btn{
-    padding:14px 24px;
-    border-radius:12px;
-    border:1px solid var(--border);
+    padding:16px 28px;
+    border-radius:14px;
+    border:1px solid var(--border2);
+    transition:.25s;
+    font-weight:600;
+}
+
+.btn:hover{
+    transform:translateY(-2px);
 }
 
 .btn-primary{
@@ -101,103 +173,251 @@ a{
     color:black;
 }
 
+.hero-metrics{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+    margin-top:90px;
+    max-width:1000px;
+}
+
+.metric{
+    border-top:1px solid rgba(255,255,255,.15);
+    padding-top:20px;
+}
+
+.metric-number{
+    font-size:2rem;
+    font-weight:800;
+}
+
+.metric-label{
+    margin-top:8px;
+    color:var(--muted);
+    font-size:.9rem;
+}
+
 .section{
     padding:140px 0;
+}
+
+.section-header{
+    margin-bottom:80px;
 }
 
 .section-label{
     color:var(--muted);
     text-transform:uppercase;
-    letter-spacing:2px;
-    margin-bottom:30px;
+    letter-spacing:.25em;
+    margin-bottom:20px;
+    font-size:.85rem;
+}
+
+.section-title{
+    font-size:clamp(2.5rem,5vw,5rem);
+    line-height:1;
+    letter-spacing:-3px;
 }
 
 .case-study{
-    margin-bottom:180px;
+    margin-bottom:220px;
 }
 
 .case-image{
-    width:100%;
-    height:700px;
-    border-radius:24px;
+    height:780px;
+    border-radius:28px;
     overflow:hidden;
     border:1px solid var(--border);
+    position:relative;
+}
+
+.case-image::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(transparent 50%, rgba(0,0,0,.35));
 }
 
 .case-image img{
     width:100%;
     height:100%;
     object-fit:cover;
+    transition:transform .8s;
+}
+
+.case-image:hover img{
+    transform:scale(1.04);
 }
 
 .case-content{
     display:grid;
     grid-template-columns:2fr 1fr;
-    gap:80px;
-    margin-top:40px;
+    gap:100px;
+    margin-top:50px;
 }
 
 .case-title{
-    font-size:3rem;
-    line-height:1.05;
-    margin-bottom:20px;
+    font-size:clamp(2rem,4vw,4rem);
+    line-height:1;
+    letter-spacing:-2px;
+    margin-bottom:24px;
 }
 
 .case-description{
+    font-size:1.15rem;
     color:var(--muted);
-    font-size:1.1rem;
-    line-height:1.8;
+    line-height:1.9;
+    max-width:850px;
 }
 
 .stats{
     display:flex;
     flex-direction:column;
-    gap:25px;
+    gap:28px;
 }
 
 .stat{
-    border-left:2px solid #fff;
-    padding-left:15px;
+    padding-left:18px;
+    border-left:2px solid white;
 }
 
 .stat-label{
-    color:var(--muted);
-    font-size:.8rem;
+    font-size:.75rem;
     text-transform:uppercase;
+    color:var(--muted);
+    letter-spacing:.15em;
 }
 
 .stat-value{
-    margin-top:5px;
+    margin-top:8px;
+    line-height:1.5;
+}
+
+.capabilities{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:25px;
+}
+
+.capability{
+    padding:30px;
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:24px;
+}
+
+.capability h3{
+    margin-bottom:15px;
+    font-size:1.1rem;
+}
+
+.capability p{
+    color:var(--muted);
+    line-height:1.7;
 }
 
 .about{
     display:grid;
-    grid-template-columns:300px 1fr;
-    gap:60px;
+    grid-template-columns:340px 1fr;
+    gap:80px;
     align-items:center;
 }
 
 .about img{
     width:100%;
-    border-radius:24px;
+    border-radius:28px;
+    border:1px solid var(--border);
+}
+
+.about h2{
+    font-size:3rem;
+    margin-bottom:25px;
+    letter-spacing:-2px;
 }
 
 .about-text{
-    font-size:1.2rem;
     color:var(--muted);
+    line-height:2;
+    font-size:1.15rem;
+}
+
+.contact{
+    padding:140px 0;
+    border-top:1px solid var(--border);
+}
+
+.contact-box{
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:32px;
+    padding:70px;
+}
+
+.contact-title{
+    font-size:clamp(2rem,5vw,4rem);
+    line-height:1;
+    letter-spacing:-3px;
+}
+
+.contact-text{
+    margin-top:25px;
+    color:var(--muted);
+    max-width:700px;
     line-height:1.8;
 }
 
+.contact-links{
+    display:flex;
+    flex-wrap:wrap;
+    gap:15px;
+    margin-top:40px;
+}
+
+.contact-link{
+    border:1px solid var(--border2);
+    padding:14px 20px;
+    border-radius:12px;
+}
+
 .footer{
+    padding:50px 0;
     border-top:1px solid var(--border);
-    padding:60px 0;
     text-align:center;
     color:var(--muted);
 }
 
-@media(max-width:900px){
+@media(max-width:1100px){
+
+.hero-metrics{
+    grid-template-columns:repeat(2,1fr);
+}
+
+.capabilities{
+    grid-template-columns:repeat(2,1fr);
+}
 
 .case-content{
+    grid-template-columns:1fr;
+    gap:50px;
+}
+
+}
+
+@media(max-width:800px){
+
+.nav-links{
+    display:none;
+}
+
+.hero h1{
+    letter-spacing:-3px;
+}
+
+.hero-metrics{
+    grid-template-columns:1fr;
+}
+
+.capabilities{
     grid-template-columns:1fr;
 }
 
@@ -206,11 +426,15 @@ a{
 }
 
 .case-image{
-    height:400px;
+    height:420px;
 }
 
-.hero h1{
-    letter-spacing:-2px;
+.contact-box{
+    padding:35px;
+}
+
+.section{
+    padding:100px 0;
 }
 
 }
@@ -219,11 +443,33 @@ a{
 </head>
 <body>
 
+<nav>
+<div class="container">
+<div class="nav-inner">
+
+<div class="logo">
+LEANDRO MARQUEZ
+</div>
+
+<div class="nav-links">
+<a href="#work">Work</a>
+<a href="#about">About</a>
+<a href="#contact">Contact</a>
+</div>
+
+</div>
+</div>
+</nav>
+
 <section class="hero">
 
 <div class="container">
 
 <div class="hero-content">
+
+<div class="eyebrow">
+AI • Simulation • Interactive Software
+</div>
 
 <h1>
 I build software,<br>
@@ -232,19 +478,46 @@ AI products.
 </h1>
 
 <p>
-Technical Product Builder focused on real-time
-visualization, computer vision, AI-powered software
-and commercial applications.
+Technical Artist, Product Builder and Unity Developer specialized in
+real-time visualization, environmental simulation, computer vision and
+commercial AI software. I turn complex technical problems into products,
+tools and interactive experiences that people actually use.
 </p>
 
 <div class="buttons">
+
 <a href="#work" class="btn btn-primary">
-View Work
+View Selected Work
 </a>
 
 <a href="resume.pdf" class="btn">
 Download CV
 </a>
+
+</div>
+
+<div class="hero-metrics">
+
+<div class="metric">
+<div class="metric-number">7+</div>
+<div class="metric-label">Years Building Software & Interactive Experiences</div>
+</div>
+
+<div class="metric">
+<div class="metric-number">3D</div>
+<div class="metric-label">Simulation, Visualization & Real-Time Rendering</div>
+</div>
+
+<div class="metric">
+<div class="metric-number">AI</div>
+<div class="metric-label">Computer Vision, Automation & Product Development</div>
+</div>
+
+<div class="metric">
+<div class="metric-number">Global</div>
+<div class="metric-label">Clients Across USA, Europe & South America</div>
+</div>
+
 </div>
 
 </div>
@@ -257,16 +530,19 @@ Download CV
 
 <div class="container">
 
-<div class="section-label">
-Selected Work
+<div class="section-header">
+<div class="section-label">Selected Work</div>
+<h2 class="section-title">
+Projects with real-world impact.
+</h2>
 </div>
 
-<!-- MASSACHUSETTS -->
+<!-- CASE 1 -->
 
 <div class="case-study">
 
 <div class="case-image">
-<img src="images/massachusetts.jpg">
+<img src="images/massachusetts.jpg" alt="">
 </div>
 
 <div class="case-content">
@@ -274,16 +550,16 @@ Selected Work
 <div>
 
 <h2 class="case-title">
-A simulation used as evidence
-in a US zoning hearing.
+A real-time simulation submitted as evidence in a Massachusetts zoning hearing.
 </h2>
 
 <p class="case-description">
-Developed a real-time environmental simulation
-submitted to the Plymouth Zoning Board of Appeals.
-The project accurately recreated vehicle headlight
-behavior and residential light intrusion using
-topographic data and interactive visualization.
+Developed a technically accurate environmental simulation for a residential
+development dispute in Plymouth, Massachusetts. The system recreated
+vehicle movement, terrain elevation, road geometry and headlight behavior
+using real-world site information to demonstrate repeated light intrusion
+into an existing property. The visualization was ultimately submitted to the
+Zoning Board of Appeals as part of the official public record.
 </p>
 
 </div>
@@ -292,17 +568,22 @@ topographic data and interactive visualization.
 
 <div class="stat">
 <div class="stat-label">Client</div>
-<div class="stat-value">Massachusetts Residential Case</div>
+<div class="stat-value">Residential Development Case</div>
 </div>
 
 <div class="stat">
-<div class="stat-label">Tools</div>
+<div class="stat-label">Stack</div>
 <div class="stat-value">Unity HDRP · Blender · C#</div>
 </div>
 
 <div class="stat">
-<div class="stat-label">Result</div>
-<div class="stat-value">Submitted as official evidence</div>
+<div class="stat-label">Outcome</div>
+<div class="stat-value">Used as technical evidence</div>
+</div>
+
+<div class="stat">
+<div class="stat-label">Industry</div>
+<div class="stat-value">Urban Planning & Environmental Analysis</div>
 </div>
 
 </div>
@@ -311,12 +592,12 @@ topographic data and interactive visualization.
 
 </div>
 
-<!-- VIDEOBOOTH -->
+<!-- CASE 2 -->
 
 <div class="case-study">
 
 <div class="case-image">
-<img src="images/videobooth.jpg">
+<img src="images/videobooth.jpg" alt="">
 </div>
 
 <div class="case-content">
@@ -324,48 +605,53 @@ topographic data and interactive visualization.
 <div>
 
 <h2 class="case-title">
-Professional AI-powered video
-background removal suite.
+Professional AI background removal software for video production.
 </h2>
 
 <p class="case-description">
-Built commercial software integrating RMV,
-BiRefNet Lite, RMBG 2.0, MODNet and MediaPipe
-into a unified workflow for video and image
-sequence processing.
+Designed and developed a commercial desktop application focused on
+high-quality background removal for videos and image sequences.
+Integrated multiple state-of-the-art segmentation models including
+RMV, BiRefNet Lite, RMBG 2.0, MODNet and MediaPipe into a unified
+workflow optimized for production environments.
 </p>
 
 </div>
 
 <div class="stats">
-
-<div class="stat">
-<div class="stat-label">Models</div>
-<div class="stat-value">5 AI Segmentation Models</div>
-</div>
-
-<div class="stat">
-<div class="stat-label">Deployment</div>
-<div class="stat-value">~1GB Package</div>
-</div>
 
 <div class="stat">
 <div class="stat-label">Client</div>
 <div class="stat-value">VideoBooth Systems</div>
 </div>
 
+<div class="stat">
+<div class="stat-label">AI Models</div>
+<div class="stat-value">5 Integrated Segmentation Pipelines</div>
+</div>
+
+<div class="stat">
+<div class="stat-label">Platform</div>
+<div class="stat-value">Desktop Application</div>
+</div>
+
+<div class="stat">
+<div class="stat-label">Role</div>
+<div class="stat-value">Lead Software Developer</div>
 </div>
 
 </div>
 
 </div>
 
-<!-- ALLOY -->
+</div>
+
+<!-- CASE 3 -->
 
 <div class="case-study">
 
 <div class="case-image">
-<img src="images/alloy.jpg">
+<img src="images/alloy.jpg" alt="">
 </div>
 
 <div class="case-content">
@@ -373,16 +659,15 @@ sequence processing.
 <div>
 
 <h2 class="case-title">
-An AI receptionist that books
-appointments automatically.
+An AI receptionist that qualifies leads and books appointments automatically.
 </h2>
 
 <p class="case-description">
-Founder and sole developer of Alloy,
-an AI-powered communication platform
-for service businesses that automates
-lead qualification, scheduling and
-customer interactions.
+Founder and sole developer of Alloy, an AI-powered communication
+platform designed for service businesses. The platform automates
+customer communication through WhatsApp, handles lead qualification,
+scheduling, CRM workflows and appointment management while reducing
+manual administrative work.
 </p>
 
 </div>
@@ -391,17 +676,22 @@ customer interactions.
 
 <div class="stat">
 <div class="stat-label">Category</div>
-<div class="stat-value">AI SaaS</div>
+<div class="stat-value">AI SaaS Platform</div>
 </div>
 
 <div class="stat">
 <div class="stat-label">Features</div>
-<div class="stat-value">CRM · WhatsApp · Scheduling</div>
+<div class="stat-value">CRM · WhatsApp · Automation · Scheduling</div>
 </div>
 
 <div class="stat">
 <div class="stat-label">Role</div>
-<div class="stat-value">Founder & Product Engineer</div>
+<div class="stat-value">Founder & Lead Developer</div>
+</div>
+
+<div class="stat">
+<div class="stat-label">Focus</div>
+<div class="stat-value">Business Process Automation</div>
 </div>
 
 </div>
@@ -418,23 +708,120 @@ customer interactions.
 
 <div class="container">
 
+<div class="section-header">
+<div class="section-label">Capabilities</div>
+<h2 class="section-title">
+What I build.
+</h2>
+</div>
+
+<div class="capabilities">
+
+<div class="capability">
+<h3>AI Software</h3>
+<p>
+AI-powered applications, automation systems,
+computer vision tools and commercial products.
+</p>
+</div>
+
+<div class="capability">
+<h3>Real-Time Simulation</h3>
+<p>
+Interactive simulations, digital twins,
+environmental analysis and visualization.
+</p>
+</div>
+
+<div class="capability">
+<h3>Interactive Experiences</h3>
+<p>
+Unity applications, product configurators,
+training systems and immersive web experiences.
+</p>
+</div>
+
+<div class="capability">
+<h3>Technical Art</h3>
+<p>
+Optimization, shaders, lighting,
+3D workflows and production pipelines.
+</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="about" class="section">
+
+<div class="container">
+
 <div class="about">
 
-<img src="images/profile.jpg">
+<img src="images/profile.jpg" alt="">
 
-<div class="about-text">
+<div>
 
-<h2 style="margin-bottom:20px;color:white;">
+<h2>
 About
 </h2>
 
-Over the last seven years I've worked across
-real-time simulation, AI-powered software,
-computer vision and interactive experiences.
+<div class="about-text">
 
-My work ranges from commercial software used by
-international companies to simulations presented
-in public regulatory hearings.
+Over the last seven years I've worked across real-time simulation,
+interactive experiences, AI-assisted workflows and commercial software
+development.
+
+My background combines technical art, software engineering and product
+thinking, allowing me to bridge the gap between complex technology and
+real-world business problems.
+
+From environmental simulations presented in public hearings to AI-powered
+software products and game development, I focus on building practical,
+production-ready solutions that deliver measurable value.
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="contact" class="contact">
+
+<div class="container">
+
+<div class="contact-box">
+
+<h2 class="contact-title">
+Available for freelance, contract and product collaborations.
+</h2>
+
+<p class="contact-text">
+Currently working with startups, agencies and businesses that need
+AI-powered software, simulation systems, visualization tools or
+interactive applications.
+</p>
+
+<div class="contact-links">
+
+<a href="mailto:nahuelmarquezwork@gmail.com" class="contact-link">
+Email
+</a>
+
+<a href="#" class="contact-link">
+LinkedIn
+</a>
+
+<a href="#" class="contact-link">
+Upwork
+</a>
 
 </div>
 
@@ -445,7 +832,7 @@ in public regulatory hearings.
 </section>
 
 <footer class="footer">
-Leandro Nahuel Marquez · Available Worldwide
+Leandro Nahuel Marquez · AI & Technical Artist · Available Worldwide
 </footer>
 
 </body>
