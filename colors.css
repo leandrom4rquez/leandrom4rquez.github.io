@@ -1,0 +1,34 @@
+/* ============================================================
+   COLORS — Edit your whole site's color palette from here.
+   These are the ONLY colors you normally need to touch.
+   Change a value, save, refresh the page. That's it.
+   ============================================================ */
+
+:root{
+  /* Backgrounds (dark base) */
+  --bg:#080b16;          /* page background (darkest) */
+  --bg-2:#0e1326;        /* secondary background */
+  --surface:#141b33;     /* cards / panels */
+  --surface-2:#1a2240;   /* raised surfaces */
+  --line:rgba(245,236,227,.07); /* borders & divider lines (warm-tinted) */
+
+  /* Text */
+  --text:#eef2fb;        /* main text */
+  --muted:#9aa6c8;       /* secondary text */
+  --faint:#65708f;       /* subtle / meta text */
+
+  /* Accent colors (the highlights, buttons, links) */
+  --accent:#5b8cff;      /* primary accent (blue) */
+  --accent-2:#9a6cff;    /* secondary accent (violet) */
+  --accent-3:#2fd6d6;    /* tertiary accent (teal) */
+  --accent-soft:rgba(91,140,255,.14); /* soft accent tint (matches --accent) */
+
+  /* Warm accents (used for warm glow / highlights) */
+  --warm:#ffb05c;
+  --warm-2:#ff8a5c;
+
+  /* Shape (not colors, but handy global tweaks) */
+  --radius:16px;
+  --maxw:1160px;
+  --shadow:0 30px 60px -25px rgba(0,0,0,.8);
+}
