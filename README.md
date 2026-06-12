@@ -1,44 +1,198 @@
 # Leandro Nahuel Marquez
-### AI & Technical Artist | Unity Developer & Software Programmer
-Salta, Argentina | nahuelmarquezwork@gmail.com
 
-[LinkedIn](https://linkedin.com/in/leandro-marquez-it) | [Upwork](https://upwork.com/freelancers/~014024ca7ade29baed)
+### AI Software Developer • Technical Product Builder • Real-Time Simulation Specialist
 
----
+I build AI-powered software, interactive applications, computer vision systems, and real-time simulations.
 
-## 🛠️ Core Stack
-* [cite_start]**Languages & Engines:** C#, Unity, REST APIs, Git.
-* [cite_start]**3D & Art:** Blender (Expert Rigging, Modeling, Animation), HDRP/URP, Real-Time Lighting[cite: 28, 67].
-* [cite_start]**AI & Automation:** Custom Chatbots, AI Workflow Design, Computer Vision, Generative AI Pipelines[cite: 63, 65].
-* [cite_start]**Post-Production:** Adobe After Effects, Premiere Pro, Photoshop[cite: 69].
+Over the last 7 years I've worked across software development, AI automation, environmental simulation, game development, and technical visualization, delivering production-ready solutions for startups, businesses, and international clients.
 
----
+📍 Salta, Argentina
+📧 [nahuelmarquezwork@gmail.com](mailto:nahuelmarquezwork@gmail.com)
 
-## 🚀 Key Projects
-
-### 🤖 AI Software & Automation
-* **Alloy — AI Receptionist & Appointment Automation**
-  * [cite_start]Built an AI-powered virtual receptionist for WhatsApp that automates customer communication, lead qualification, and scheduling[cite: 14, 15].
-  * [cite_start]*Stack: AI Integrations, Automation Systems, Firebase, REST APIs.* [cite: 12, 65]
-* **VideoBooth Systems**
-  * [cite_start]Developed an AI-powered background removal application for video and image sequence processing, integrating state-of-the-art segmentation models[cite: 17, 18].
-
-### 📐 3D Visualization & Simulation
-* **Light Pollution Impact Study (US Client)**
-  * [cite_start]Created a real-time 3D simulation to demonstrate vehicle headlight light pollution for a residential road under Massachusetts Chapter 40B regulations[cite: 22].
-  * [cite_start]Submitted as technical evidence to the Plymouth Zoning Board of Appeals (ZBA).
-  * [cite_start]*Focus: Accurate topographic data, road geometry simulation, and light behavior.* [cite: 23]
-
-### 🎮 Game Development
-* **Between Songs & Demons**
-  * [cite_start]Developing a retro-horror title (PSX style) in Unity[cite: 33]. [cite_start]Handle game logic, level design, and low-poly asset creation in Blender[cite: 33, 34].
-* **SAVIA (Global Game Jam Prototype)**
-  * [cite_start]Psychological thriller set in the South American Gran Chaco[cite: 48]. [cite_start]Ranked #60 worldwide and stood as the only Argentinian semifinalist[cite: 49].
-  * [cite_start]Implemented task-oriented AI, survival systems, and driving mechanics in C#[cite: 50].
+* LinkedIn: https://linkedin.com/in/leandro-marquez-it
+* Upwork: https://upwork.com/freelancers/~014024ca7ade29baed
 
 ---
 
-## 📩 Let's Connect
-[cite_start]I'm open to full-time roles, contract work, or technical collaborations in **Technical Art, Unity Development, or AI Automation**[cite: 2, 8, 9, 13, 17]. 
+# What I Do
 
-> **Tip:** If you want to check my visual 3D portfolio, feel free to ask or visit my active platforms.
+### AI Software Development
+
+Building commercial AI applications that automate workflows, customer interactions, content processing, and business operations.
+
+### Computer Vision & AI Integrations
+
+Integrating state-of-the-art AI models into production-ready software products and user-facing applications.
+
+### Real-Time Simulation
+
+Developing interactive simulations for environmental analysis, visualization, training systems, and technical presentations.
+
+### Interactive Applications
+
+Creating desktop applications, Unity software, visualization tools, product configurators, and immersive experiences.
+
+---
+
+# Featured Projects
+
+## Alloy — AI Receptionist Platform
+
+Founder & Lead Developer
+
+An AI-powered receptionist platform that automates customer communication, lead qualification, appointment scheduling, and business workflows through WhatsApp.
+
+### Highlights
+
+* Automated lead qualification
+* Appointment scheduling
+* CRM integration
+* Business workflow automation
+* AI-powered customer communication
+
+### Technologies
+
+C# • Firebase • REST APIs • Automation Systems • AI Integrations
+
+---
+
+## VideoBooth Systems
+
+Lead Software Developer
+
+Professional AI-powered background removal software for video and image sequence processing.
+
+### Highlights
+
+* Multi-model AI pipeline
+* Video background removal
+* Image sequence processing
+* Commercial desktop application
+* Production-ready deployment
+
+### Integrated Models
+
+* RMV
+* BiRefNet Lite
+* RMBG 2.0
+* MODNet
+* MediaPipe
+
+---
+
+## Light Pollution Impact Study
+
+Simulation Developer
+
+Developed a real-time environmental simulation used to demonstrate vehicle headlight light intrusion caused by a proposed residential road development in Massachusetts.
+
+### Outcome
+
+The simulation was submitted as technical evidence to the Plymouth Zoning Board of Appeals (ZBA), helping communicate environmental impact through accurate interactive visualization.
+
+### Technologies
+
+Unity HDRP • Blender • C#
+
+---
+
+## Between Songs & Demons
+
+Developer & Technical Artist
+
+Retro-horror title inspired by the PlayStation 1 era aesthetic.
+
+### Responsibilities
+
+* Gameplay programming
+* Technical implementation
+* Low-poly asset creation
+* Environment production
+* Level design
+* Performance optimization
+
+---
+
+## SAVIA
+
+Developer & Technical Artist
+
+Psychological thriller prototype created during Game Jam Plus 24/25.
+
+### Achievements
+
+* Ranked #60 worldwide
+* Only Argentinian semifinalist
+* Developed in 48 hours
+
+### Systems Implemented
+
+* Task-oriented AI
+* Survival mechanics
+* Driving systems
+* Full gameplay framework
+
+---
+
+# Technical Skills
+
+## Programming & Software
+
+* C#
+* Unity
+* REST APIs
+* Firebase
+* Git
+* Automation Systems
+
+## AI & Emerging Technologies
+
+* AI Software Development
+* AI Workflow Design
+* Computer Vision
+* Generative AI Pipelines
+* Rapid Prototyping
+* AI Integrations
+
+## 3D & Visualization
+
+* Blender
+* Technical Art
+* Real-Time Rendering
+* HDRP / URP
+* Lighting
+* Architectural Visualization
+
+## Creative Tools
+
+* Adobe After Effects
+* Premiere Pro
+* Photoshop
+* Audition
+
+---
+
+# Currently Interested In
+
+* AI Software Engineering
+* Technical Product Development
+* Computer Vision
+* Automation Platforms
+* Interactive Applications
+* Real-Time Visualization
+* Simulation Systems
+
+---
+
+# Open To Work
+
+Available for:
+
+* Full-time opportunities
+* Contract work
+* Startup collaborations
+* Technical consulting
+* AI product development
+* Simulation and visualization projects
+
+Feel free to reach out if you're building something ambitious.
