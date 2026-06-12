@@ -36,7 +36,7 @@ Creating desktop applications, Unity software, visualization tools, product conf
 
 # Featured Projects
 
-## Alloy — AI Receptionist Platform
+## Alloy | AI Receptionist Platform
 
 Founder & Lead Developer
 
