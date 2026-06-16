@@ -73,10 +73,10 @@ header.nav{position:sticky;top:0;z-index:60;backdrop-filter:blur(12px);
 @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(91,140,255,.5)}70%{box-shadow:0 0 0 8px rgba(91,140,255,0)}100%{box-shadow:0 0 0 0 rgba(91,140,255,0)}}
 .lang{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;font-size:.8rem}
 .lang button{background:transparent;border:0;color:var(--muted);padding:6px 12px;cursor:pointer;font-family:inherit;font-weight:600;letter-spacing:.04em}
-.lang button.active{background:var(--accent);color:#0a0e1a}
+.lang button.active{background:var(--accent,#5b8cff);color:#0a0e1a}
 .btn{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:12px 22px;font-weight:600;font-size:.95rem;cursor:pointer;transition:transform .15s,background .2s;border:1px solid transparent;font-family:inherit}
 .btn:hover{transform:translateY(-2px)}
-.btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#0a0e1a}
+.btn-primary{background:linear-gradient(135deg,var(--accent,#5b8cff),var(--accent-2,#9a6cff));color:#0a0e1a}
 .btn-ghost{border-color:var(--line);color:var(--text);background:var(--surface)}
 .nav-toggle{display:none}
 
@@ -318,10 +318,10 @@ body{background-image:radial-gradient(1100px 600px at 88% -8%,rgba(255,176,92,.0
 @media(max-width:560px){.marquee-row img{height:108px}}
 
 /* ===== warm accents on buttons + panels ===== */
-.btn-primary{background:linear-gradient(135deg,var(--warm),var(--warm-2) 55%,var(--accent));box-shadow:0 12px 32px -12px rgba(255,138,92,.6)}
+.btn-primary{background:linear-gradient(135deg,var(--warm,#ffb05c),var(--warm-2,#ff8a5c));color:#1a1206;box-shadow:0 12px 32px -12px rgba(255,138,92,.6)}
 .btn-primary:hover{box-shadow:0 16px 38px -12px rgba(255,138,92,.75)}
-.btn-icon:hover{background:linear-gradient(135deg,var(--warm),var(--accent));color:#0a0e1a}
-.lang button.active{background:linear-gradient(135deg,var(--warm),var(--warm-2));color:#0a0e1a}
+.btn-icon:hover{background:linear-gradient(135deg,var(--warm,#ffb05c),var(--accent,#5b8cff));color:#0a0e1a}
+.lang button.active{background:linear-gradient(135deg,var(--warm,#ffb05c),var(--warm-2,#ff8a5c));color:#1a1206}
 .card .ic{color:var(--warm);background:radial-gradient(circle at 32% 30%,rgba(255,176,92,.22),rgba(255,176,92,.05))}
 .card:hover{box-shadow:inset 0 1px 0 rgba(255,176,92,.32),0 26px 54px -26px rgba(0,0,0,1)}
 .panel,.skill-block{box-shadow:inset 0 1px 0 rgba(255,176,92,.10),0 18px 42px -30px rgba(0,0,0,.95)}
@@ -436,7 +436,7 @@ html,body{overflow-x:clip}
         </ul>
         <div class="tags"><span>Unity</span><span>C#</span><span>Blender</span><span>PSX style</span></div>
       </div>
-      <div class="carousel" data-carousel>
+      <div class="carousel" data-carousel data-extra="between">
         <div class="track">
           <div class="slide"><img loading="lazy" src="images/between-songs-demons-dim-haunted-corrido.webp" alt="Between Songs & Demons, dim haunted corridor"><div class="cap" data-en="Abandoned house corridor, PSX lighting" data-es="Pasillo de casa abandonada, iluminación PSX">Abandoned house corridor, PSX lighting</div></div>
           <div class="slide"><img loading="lazy" src="images/between-songs-demons-flashlight-characte.webp" alt="Between Songs & Demons, flashlight character in basement"><div class="cap" data-en="Flashlight exploration in the basement" data-es="Exploración con linterna en el sótano">Flashlight exploration in the basement</div></div>
@@ -461,7 +461,7 @@ html,body{overflow-x:clip}
         </ul>
         <div class="tags"><span>C#</span><span>Firebase</span><span>REST APIs</span><span>AI Integrations</span></div>
       </div>
-      <div class="carousel" data-carousel>
+      <div class="carousel" data-carousel data-extra="alloy">
         <div class="track">
           <div class="slide"><img loading="lazy" src="images/alloy-landing-and-whatsapp-chat-mockup.webp" alt="Alloy, landing and WhatsApp chat mockup"><div class="cap" data-en="Product landing & live conversation" data-es="Landing del producto y conversación en vivo">Product landing & live conversation</div></div>
           <div class="slide"><img loading="lazy" src="images/alloy-whatsapp-business-chat-automation.webp" alt="Alloy, WhatsApp business chat automation"><div class="cap" data-en="AI answering customers on WhatsApp" data-es="IA respondiendo clientes en WhatsApp">AI answering customers on WhatsApp</div></div>
@@ -479,7 +479,7 @@ html,body{overflow-x:clip}
         <div class="outcome" data-en="Submitted as technical evidence to the Plymouth Zoning Board of Appeals (ZBA), helping communicate environmental impact through accurate interactive visualization." data-es="Presentada como evidencia técnica ante el Zoning Board of Appeals (ZBA) de Plymouth, ayudando a comunicar el impacto ambiental mediante visualización interactiva precisa.">Submitted as technical evidence to the Plymouth Zoning Board of Appeals (ZBA), helping communicate environmental impact through accurate interactive visualization.</div>
         <div class="tags"><span>Unity HDRP</span><span>Blender</span><span>C#</span><span data-en="Real-time lighting" data-es="Iluminación en tiempo real">Real-time lighting</span></div>
       </div>
-      <div class="carousel" data-carousel>
+      <div class="carousel" data-carousel data-extra="light">
         <div class="track">
           <div class="slide"><img loading="lazy" src="images/headlight-intrusion-onto-a-house-at-nigh.webp" alt="Headlight intrusion onto a house at night"><div class="cap" data-en="Headlight intrusion onto an existing home" data-es="Intrusión de luces sobre una vivienda existente">Headlight intrusion onto an existing home</div></div>
           <div class="slide"><img loading="lazy" src="images/aerial-site-plan-of-the-proposed-road-at.webp" alt="Aerial site plan of the proposed road at night"><div class="cap" data-en="Aerial site plan with vehicle paths" data-es="Plano aéreo con recorridos de vehículos">Aerial site plan with vehicle paths</div></div>
@@ -504,7 +504,7 @@ html,body{overflow-x:clip}
         </ul>
         <div class="tags"><span>RMV</span><span>BiRefNet Lite</span><span>RMBG 2.0</span><span>MODNet</span><span>MediaPipe</span></div>
       </div>
-      <div class="carousel" data-carousel>
+      <div class="carousel" data-carousel data-extra="videobooth">
         <div class="track">
           <div class="slide"><img loading="lazy" src="images/before-and-after-background-removal-comp.webp" alt="Before and after background removal comparison"><div class="cap" data-en="Before / after, instant subject cutout" data-es="Antes / después, recorte instantáneo del sujeto">Before / after, instant subject cutout</div></div>
           <div class="slide"><img loading="lazy" src="images/desktop-ui-with-timeline-and-model-selec.webp" alt="Desktop UI with timeline and model selection"><div class="cap" data-en="Desktop app, timeline & model selection" data-es="App de escritorio, línea de tiempo y modelos">Desktop app, timeline & model selection</div></div>
@@ -659,13 +659,42 @@ html,body{overflow-x:clip}
     });
   });
 
-  // ---- Carousels ----
-  document.querySelectorAll("[data-carousel]").forEach(function(car){
+  // ---- Lightbox refs ----
+  var lb = document.getElementById("lightbox");
+  var lbImg = lb.querySelector("img");
+  function closeLb(){ lb.classList.remove("open"); }
+  lb.addEventListener("click",closeLb);
+  document.addEventListener("keydown",function(e){ if(e.key==="Escape")closeLb(); });
+  function bindLightbox(img){
+    img.addEventListener("click",function(){ lbImg.src=img.src; lbImg.alt=img.alt; lb.classList.add("open"); });
+  }
+
+  // ---- Auto-load extra images by prefix ----
+  // Drop files named "<prefix>-1.webp", "<prefix>-2.webp", ... in /images and
+  // they appear automatically (sequential, stops at the first missing number).
+  function probeExtras(prefix){
+    return new Promise(function(resolve){
+      var found = [], idx = 1, MAX = 40;
+      function tryNext(){
+        if(idx > MAX){ resolve(found); return; }
+        var url = "images/" + prefix + "-" + idx + ".webp";
+        var img = new Image();
+        img.onload = function(){ found.push(url); idx++; tryNext(); };
+        img.onerror = function(){ resolve(found); };
+        img.src = url;
+      }
+      tryNext();
+    });
+  }
+
+  // ---- Carousel init ----
+  function initCarousel(car){
     var track = car.querySelector(".track");
     var slides = car.querySelectorAll(".slide");
     var n = slides.length, i = 0;
-    var prev = document.createElement("button"); prev.className="car-btn prev"; prev.innerHTML="‹"; prev.setAttribute("aria-label","Previous");
-    var next = document.createElement("button"); next.className="car-btn next"; next.innerHTML="›"; next.setAttribute("aria-label","Next");
+    if(!n) return;
+    var prev = document.createElement("button"); prev.className="car-btn prev"; prev.innerHTML="\u2039"; prev.setAttribute("aria-label","Previous");
+    var next = document.createElement("button"); next.className="car-btn next"; next.innerHTML="\u203A"; next.setAttribute("aria-label","Next");
     var dots = document.createElement("div"); dots.className="dots";
     var counter = document.createElement("div"); counter.className="counter";
     car.appendChild(prev); car.appendChild(next); car.appendChild(dots); car.appendChild(counter);
@@ -679,43 +708,51 @@ html,body{overflow-x:clip}
     prev.addEventListener("click",function(){go(i-1)});
     next.addEventListener("click",function(){go(i+1)});
     render();
-    // keyboard
     car.tabIndex=0;
     car.addEventListener("keydown",function(e){ if(e.key==="ArrowLeft")go(i-1); if(e.key==="ArrowRight")go(i+1); });
-    // swipe
     var sx=0;
     car.addEventListener("touchstart",function(e){ sx=e.touches[0].clientX; },{passive:true});
     car.addEventListener("touchend",function(e){ var dx=e.changedTouches[0].clientX-sx; if(Math.abs(dx)>40){ go(dx<0?i+1:i-1);} });
-    // autoplay (pause on hover)
     var timer = setInterval(function(){go(i+1)}, 6000);
     car.addEventListener("mouseenter",function(){clearInterval(timer)});
     car.addEventListener("mouseleave",function(){ timer=setInterval(function(){go(i+1)},6000); });
-  });
+  }
 
-  // ---- Lightbox ----
-  var lb = document.getElementById("lightbox");
-  var lbImg = lb.querySelector("img");
-  document.querySelectorAll(".carousel .slide img").forEach(function(img){
-    img.addEventListener("click",function(){ lbImg.src=img.src; lbImg.alt=img.alt; lb.classList.add("open"); });
-  });
-  function closeLb(){ lb.classList.remove("open"); }
-  lb.addEventListener("click",closeLb);
-  document.addEventListener("keydown",function(e){ if(e.key==="Escape")closeLb(); });
-
-  // ---- Bottom marquee (clone project images, no extra base64) ----
-  (function(){
+  // ---- Build all carousels (after extras load) then lightbox + marquee ----
+  var carEls = [].slice.call(document.querySelectorAll("[data-carousel]"));
+  Promise.all(carEls.map(function(car){
+    var prefix = car.getAttribute("data-extra");
+    var track = car.querySelector(".track");
+    var label = (car.closest(".project") && car.closest(".project").querySelector("h3"))
+      ? car.closest(".project").querySelector("h3").textContent.trim() : "Project";
+    var job = prefix ? probeExtras(prefix) : Promise.resolve([]);
+    return job.then(function(urls){
+      urls.forEach(function(u, k){
+        var s = document.createElement("div"); s.className = "slide";
+        var im = document.createElement("img"); im.loading = "lazy"; im.src = u;
+        im.alt = label + " image " + (k+1);
+        s.appendChild(im); track.appendChild(s);
+      });
+      initCarousel(car);
+    });
+  })).then(function(){
+    document.querySelectorAll(".carousel .slide img").forEach(bindLightbox);
+    // ---- Bottom marquee (clone project images, no extra base64) ----
     var srcs = [];
     document.querySelectorAll(".carousel .slide img").forEach(function(img){ if(img.src) srcs.push({src:img.src,alt:img.alt||""}); });
-    if(!srcs.length) return;
-    function fill(row, list){
-      var two = list.concat(list); // duplicate for seamless -50% loop
-      two.forEach(function(o){ var im=document.createElement("img"); im.loading="lazy"; im.src=o.src; im.alt=o.alt; row.appendChild(im); });
+    if(srcs.length){
+      var fill = function(row, list){
+        var two = list.concat(list);
+        two.forEach(function(o){ var im=document.createElement("img"); im.loading="lazy"; im.src=o.src; im.alt=o.alt; row.appendChild(im); });
+      };
+      var left = document.querySelector('[data-mq-row="left"]');
+      var right = document.querySelector('[data-mq-row="right"]');
+      if(left) fill(left, srcs);
+      if(right) fill(right, srcs.slice().reverse());
     }
-    var left = document.querySelector('[data-mq-row="left"]');
-    var right = document.querySelector('[data-mq-row="right"]');
-    if(left) fill(left, srcs);
-    if(right) fill(right, srcs.slice().reverse());
-  })();
+  });
+
+
 
   // ---- Reveal on scroll ----
   if("IntersectionObserver" in window){
