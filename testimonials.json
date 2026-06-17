@@ -1,0 +1,29 @@
+[
+  {
+    "name": "Client Name",
+    "role_en": "CEO, Company",
+    "role_es": "CEO, Empresa",
+    "rating": 5,
+    "avatar": "",
+    "text_en": "Leandro delivered exactly what we needed, on time and beyond expectations. Clear communication and strong technical execution from start to finish.",
+    "text_es": "Leandro entregó exactamente lo que necesitábamos, a tiempo y superando expectativas. Comunicación clara y una ejecución técnica sólida de principio a fin."
+  },
+  {
+    "name": "Colaborador",
+    "role_en": "Game Designer",
+    "role_es": "Diseñador de Videojuegos",
+    "rating": 5,
+    "avatar": "",
+    "text_en": "A rare mix of developer and technical artist. He solved hard problems fast and kept the whole project running smoothly.",
+    "text_es": "Una combinación poco común de desarrollador y artista técnico. Resolvió problemas difíciles rápido y mantuvo todo el proyecto en marcha."
+  },
+  {
+    "name": "Project Lead",
+    "role_en": "Product Owner",
+    "role_es": "Product Owner",
+    "rating": 5,
+    "avatar": "",
+    "text_en": "Reliable, proactive and genuinely talented. The simulation he built communicated our case better than any document could.",
+    "text_es": "Confiable, proactivo y realmente talentoso. La simulación que construyó comunicó nuestro caso mejor que cualquier documento."
+  }
+]

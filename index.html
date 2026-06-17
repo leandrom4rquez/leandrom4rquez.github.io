@@ -345,6 +345,73 @@ html,body{overflow-x:clip}
   .brand{font-size:.95rem}
 }
 
+/* ===== colorful tags (colored via JS techStyle, base reset here) ===== */
+.tags span,.chips span{font-weight:600;transition:transform .15s,filter .2s}
+.tags span:hover,.chips span:hover{transform:translateY(-1px);filter:brightness(1.12)}
+
+/* ===== featured projects ===== */
+.project.featured .pinfo{position:relative}
+.feat-badge{display:flex;width:max-content;align-items:center;gap:7px;font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:#1a1206;background:linear-gradient(135deg,var(--warm,#ffb05c),var(--warm-2,#ff8a5c));
+  padding:5px 12px;border-radius:999px;margin-bottom:14px;box-shadow:0 10px 26px -12px rgba(255,138,92,.7)}
+.feat-badge svg{width:13px;height:13px}
+.project.featured .carousel{box-shadow:0 30px 70px -28px rgba(255,138,92,.45),0 30px 64px -30px rgba(0,0,0,.95)}
+.project.featured .carousel::after{content:"";position:absolute;inset:0;border-radius:20px;pointer-events:none;
+  box-shadow:inset 0 0 0 1px rgba(255,176,92,.35)}
+.pactions{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px}
+.btn-detail{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:11px 20px;font-weight:600;font-size:.92rem;
+  cursor:pointer;border:0;font-family:inherit;color:var(--text);background:rgba(245,236,227,.06);
+  box-shadow:inset 0 1px 0 rgba(245,236,227,.08);transition:transform .15s,background .2s,color .2s}
+.btn-detail:hover{transform:translateY(-2px);background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#0a0e1a}
+.btn-detail svg{width:16px;height:16px}
+
+/* ===== project detail modal ===== */
+.modal{position:fixed;inset:0;z-index:220;background:rgba(8,6,5,.78);backdrop-filter:blur(8px);
+  display:none;align-items:flex-start;justify-content:center;padding:5vh 20px;overflow-y:auto}
+.modal.open{display:flex}
+.modal-box{position:relative;max-width:880px;width:100%;background:linear-gradient(180deg,var(--surface),var(--bg-2));
+  border-radius:22px;box-shadow:0 40px 90px -30px rgba(0,0,0,.95);overflow:hidden;animation:modalIn .35s cubic-bezier(.2,.7,.2,1)}
+@keyframes modalIn{from{opacity:0;transform:translateY(26px) scale(.98)}to{opacity:1;transform:none}}
+.modal-hero{position:relative;aspect-ratio:16/8;background:#000;overflow:hidden}
+.modal-hero img{width:100%;height:100%;object-fit:cover}
+.modal-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(8,11,22,.85));pointer-events:none}
+.modal-thumbs{position:absolute;left:0;right:0;bottom:14px;z-index:2;display:flex;gap:8px;justify-content:center;flex-wrap:wrap;padding:0 14px}
+.modal-thumbs img{width:54px;height:38px;object-fit:cover;border-radius:8px;cursor:pointer;opacity:.55;transition:opacity .2s,transform .2s;box-shadow:0 0 0 1px rgba(255,255,255,.12)}
+.modal-thumbs img.active,.modal-thumbs img:hover{opacity:1;transform:translateY(-2px);box-shadow:0 0 0 2px var(--warm,#ffb05c)}
+.modal-body{padding:28px 32px 34px}
+.modal-body .role{color:var(--warm);font-weight:600;font-size:.8rem;letter-spacing:.04em;text-transform:uppercase}
+.modal-body h3{font-size:clamp(1.6rem,3vw,2.2rem);margin:8px 0 14px}
+.modal-body p.lead{color:var(--muted);font-size:1.02rem;margin:0 0 20px}
+.modal-grid{display:grid;grid-template-columns:1.3fr .7fr;gap:26px}
+.modal-grid h4{font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin:0 0 12px}
+.modal-feats{list-style:none;padding:0;margin:0;display:grid;gap:9px}
+.modal-feats li{position:relative;padding-left:20px;color:var(--text);font-size:.94rem}
+.modal-feats li::before{content:"";position:absolute;left:0;top:.55em;width:7px;height:7px;border-radius:50%;background:var(--warm)}
+.modal-side .tags{margin-bottom:22px}
+.modal-links{display:flex;flex-direction:column;gap:10px}
+.modal-close{position:absolute;top:14px;right:16px;z-index:3;width:40px;height:40px;border-radius:50%;border:0;cursor:pointer;
+  background:rgba(8,6,5,.6);backdrop-filter:blur(6px);color:#fff;font-size:1.5rem;line-height:1;display:grid;place-items:center;transition:background .2s}
+.modal-close:hover{background:var(--warm);color:#1a1206}
+@media(max-width:680px){.modal-grid{grid-template-columns:1fr;gap:18px}.modal-body{padding:22px 20px 28px}}
+
+/* ===== testimonials ===== */
+.t-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.t-card{background:linear-gradient(180deg,rgba(245,236,227,.05),rgba(245,236,227,.015));border-radius:var(--radius);
+  padding:26px 24px;box-shadow:inset 0 1px 0 rgba(255,176,92,.10),0 18px 42px -30px rgba(0,0,0,.95);
+  display:flex;flex-direction:column;gap:16px;position:relative;transition:transform .2s,box-shadow .2s}
+.t-card:hover{transform:translateY(-4px);box-shadow:inset 0 1px 0 rgba(255,176,92,.30),0 26px 54px -26px rgba(0,0,0,1)}
+.t-quote{font-size:1.7rem;line-height:1;color:var(--warm);font-family:"Bricolage Grotesque",serif;opacity:.65}
+.t-text{color:var(--text);font-size:.98rem;margin:0;flex:1}
+.t-who{display:flex;align-items:center;gap:12px}
+.t-av{width:44px;height:44px;border-radius:50%;object-fit:cover;flex:0 0 auto;box-shadow:0 0 0 1px rgba(245,236,227,.14)}
+.t-av.ph{display:grid;place-items:center;font-weight:700;color:#1a1206;background:linear-gradient(135deg,var(--warm),var(--warm-2));font-family:"Bricolage Grotesque",serif}
+.t-name{font-weight:600;color:var(--text);font-size:.95rem;line-height:1.2}
+.t-role{color:var(--muted);font-size:.82rem}
+.t-stars{color:var(--warm);font-size:.9rem;letter-spacing:2px}
+.t-card:nth-child(2){transition-delay:.07s}.t-card:nth-child(3){transition-delay:.14s}
+@media(max-width:920px){.t-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.t-grid{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body>
@@ -357,6 +424,7 @@ html,body{overflow-x:clip}
     <nav class="nav-links">
       <a href="#work" data-en="What I Do" data-es="Qué hago">What I Do</a>
       <a href="#projects" data-en="Projects" data-es="Proyectos">Projects</a>
+      <a href="#testimonials" data-en="Testimonials" data-es="Testimonios">Testimonials</a>
       <a href="#skills" data-en="Skills" data-es="Habilidades">Skills</a>
       <a href="#contact" data-en="Contact" data-es="Contacto">Contact</a>
     </nav>
@@ -421,8 +489,9 @@ html,body{overflow-x:clip}
     </div>
 
     <!-- Between Songs & Demons -->
-    <div class="project reveal">
+    <div class="project featured reveal" data-project="between">
       <div class="pinfo">
+        <span class="feat-badge"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 7.1-1.01z"/></svg><span data-en="Featured" data-es="Destacado">Featured</span></span>
         <span class="role" data-en="Developer & Technical Artist" data-es="Desarrollador y Artista Técnico">Developer & Technical Artist</span>
         <h3 class="serif">Between Songs &amp; Demons</h3>
         <p data-en="Retro-horror title inspired by the PlayStation 1 era aesthetic, built in Unity with a focus on technical implementation and consistent PSX-style performance." data-es="Título de retro-horror inspirado en la estética de la era PlayStation 1, hecho en Unity con foco en la implementación técnica y un rendimiento estilo PSX consistente.">Retro-horror title inspired by the PlayStation 1 era aesthetic, built in Unity with a focus on technical implementation and consistent PSX-style performance.</p>
@@ -435,6 +504,9 @@ html,body{overflow-x:clip}
           <li data-en="Technical implementation" data-es="Implementación técnica">Technical implementation</li>
         </ul>
         <div class="tags"><span>Unity</span><span>C#</span><span>Blender</span><span>PSX style</span></div>
+        <div class="pactions">
+          <button class="btn-detail" data-detail="between"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><span data-en="View details" data-es="Ver más">View details</span></button>
+        </div>
       </div>
       <div class="carousel" data-carousel data-extra="between">
         <div class="track">
@@ -446,8 +518,9 @@ html,body{overflow-x:clip}
     </div>
 
     <!-- Alloy -->
-    <div class="project flip reveal">
+    <div class="project featured flip reveal" data-project="alloy">
       <div class="pinfo">
+        <span class="feat-badge"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 7.1-1.01z"/></svg><span data-en="Featured" data-es="Destacado">Featured</span></span>
         <span class="role" data-en="Founder & Lead Developer" data-es="Fundador y Desarrollador Principal">Founder & Lead Developer</span>
         <h3 class="serif">Alloy, AI Receptionist</h3>
         <p data-en="An AI-powered receptionist platform that automates customer communication, lead qualification, appointment scheduling and business workflows through WhatsApp." data-es="Una plataforma de recepcionista con IA que automatiza la comunicación con clientes, calificación de leads, agendamiento de turnos y flujos de negocio a través de WhatsApp.">An AI-powered receptionist platform that automates customer communication, lead qualification, appointment scheduling and business workflows through WhatsApp.</p>
@@ -460,6 +533,9 @@ html,body{overflow-x:clip}
           <li data-en="WhatsApp-native" data-es="Nativo en WhatsApp">WhatsApp-native</li>
         </ul>
         <div class="tags"><span>C#</span><span>Firebase</span><span>REST APIs</span><span>AI Integrations</span></div>
+        <div class="pactions">
+          <button class="btn-detail" data-detail="alloy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><span data-en="View details" data-es="Ver más">View details</span></button>
+        </div>
       </div>
       <div class="carousel" data-carousel data-extra="alloy">
         <div class="track">
@@ -471,13 +547,16 @@ html,body{overflow-x:clip}
     </div>
 
     <!-- Light Pollution Simulation -->
-    <div class="project reveal">
+    <div class="project reveal" data-project="light">
       <div class="pinfo">
         <span class="role" data-en="Simulation Developer" data-es="Desarrollador de Simulación">Simulation Developer</span>
         <h3 class="serif" data-en="Light Pollution Impact Study" data-es="Estudio de Impacto de Contaminación Lumínica">Light Pollution Impact Study</h3>
         <p data-en="A real-time environmental simulation demonstrating vehicle headlight intrusion caused by a proposed residential road in Massachusetts, built from accurate topographic and site-plan data." data-es="Una simulación ambiental en tiempo real que demuestra la intrusión de luces de vehículos causada por un camino residencial propuesto en Massachusetts, construida a partir de datos topográficos y de planos precisos.">A real-time environmental simulation demonstrating vehicle headlight intrusion caused by a proposed residential road in Massachusetts, built from accurate topographic and site-plan data.</p>
         <div class="outcome" data-en="Submitted as technical evidence to the Plymouth Zoning Board of Appeals (ZBA), helping communicate environmental impact through accurate interactive visualization." data-es="Presentada como evidencia técnica ante el Zoning Board of Appeals (ZBA) de Plymouth, ayudando a comunicar el impacto ambiental mediante visualización interactiva precisa.">Submitted as technical evidence to the Plymouth Zoning Board of Appeals (ZBA), helping communicate environmental impact through accurate interactive visualization.</div>
         <div class="tags"><span>Unity HDRP</span><span>Blender</span><span>C#</span><span data-en="Real-time lighting" data-es="Iluminación en tiempo real">Real-time lighting</span></div>
+        <div class="pactions">
+          <button class="btn-detail" data-detail="light"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><span data-en="View details" data-es="Ver más">View details</span></button>
+        </div>
       </div>
       <div class="carousel" data-carousel data-extra="light">
         <div class="track">
@@ -489,7 +568,7 @@ html,body{overflow-x:clip}
     </div>
 
     <!-- Background Remover -->
-    <div class="project flip reveal">
+    <div class="project flip reveal" data-project="videobooth">
       <div class="pinfo">
         <span class="role" data-en="Lead Software Developer" data-es="Desarrollador de Software Principal">Lead Software Developer</span>
         <h3 class="serif" data-en="Background Remover, VideoBooth" data-es="Background Remover, VideoBooth">Background Remover, VideoBooth</h3>
@@ -503,6 +582,9 @@ html,body{overflow-x:clip}
           <li data-en="Precise edge masking" data-es="Enmascarado de bordes preciso">Precise edge masking</li>
         </ul>
         <div class="tags"><span>RMV</span><span>BiRefNet Lite</span><span>RMBG 2.0</span><span>MODNet</span><span>MediaPipe</span></div>
+        <div class="pactions">
+          <button class="btn-detail" data-detail="videobooth"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><span data-en="View details" data-es="Ver más">View details</span></button>
+        </div>
       </div>
       <div class="carousel" data-carousel data-extra="videobooth">
         <div class="track">
@@ -527,6 +609,20 @@ html,body{overflow-x:clip}
     </div>
   </div>
 </section>
+
+<!-- TESTIMONIALS (content loaded from testimonials.json) -->
+<section id="testimonials">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow" data-en="Testimonials" data-es="Testimonios">Testimonials</span>
+      <h2 class="serif" data-en="What people say" data-es="Lo que dicen">What people say</h2>
+      <p data-en="Feedback from clients and collaborators I've worked with. Edit these in testimonials.json." data-es="Comentarios de clientes y colaboradores con los que trabajé. Editalos en testimonials.json.">Feedback from clients and collaborators I've worked with. Edit these in testimonials.json.</p>
+    </div>
+    <div class="t-grid" id="testimonials-grid"></div>
+  </div>
+</section>
+
+
 
 <!-- SKILLS -->
 <section id="skills">
@@ -614,6 +710,30 @@ html,body{overflow-x:clip}
 
 <div class="lightbox" id="lightbox"><span class="close">×</span><img alt="Expanded project image" /></div>
 
+<!-- PROJECT DETAIL MODAL -->
+<div class="modal" id="projectModal" role="dialog" aria-modal="true" aria-label="Project details">
+  <div class="modal-box">
+    <button class="modal-close" aria-label="Close">×</button>
+    <div class="modal-hero"><img id="pm-img" alt="" /><div class="modal-thumbs" id="pm-thumbs"></div></div>
+    <div class="modal-body">
+      <span class="role" id="pm-role"></span>
+      <h3 class="serif" id="pm-title"></h3>
+      <p class="lead" id="pm-lead"></p>
+      <div class="modal-grid">
+        <div>
+          <h4 data-en="Highlights" data-es="Destacados">Highlights</h4>
+          <ul class="modal-feats" id="pm-feats"></ul>
+        </div>
+        <div class="modal-side">
+          <h4 data-en="Stack" data-es="Tecnologías">Stack</h4>
+          <div class="tags" id="pm-tags"></div>
+          <div class="modal-links" id="pm-links"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
 (function(){
   // ---- Language ----
@@ -693,11 +813,9 @@ html,body{overflow-x:clip}
     var slides = car.querySelectorAll(".slide");
     var n = slides.length, i = 0;
     if(!n) return;
-    var prev = document.createElement("button"); prev.className="car-btn prev"; prev.innerHTML="\u2039"; prev.setAttribute("aria-label","Previous");
-    var next = document.createElement("button"); next.className="car-btn next"; next.innerHTML="\u203A"; next.setAttribute("aria-label","Next");
     var dots = document.createElement("div"); dots.className="dots";
     var counter = document.createElement("div"); counter.className="counter";
-    car.appendChild(prev); car.appendChild(next); car.appendChild(dots); car.appendChild(counter);
+    car.appendChild(dots); car.appendChild(counter);
     for(var d=0; d<n; d++){ (function(k){ var b=document.createElement("button"); b.setAttribute("aria-label","Slide "+(k+1)); b.addEventListener("click",function(){go(k)}); dots.appendChild(b); })(d); }
     function render(){
       track.style.transform = "translateX(" + (-i*100) + "%)";
@@ -705,8 +823,6 @@ html,body{overflow-x:clip}
       counter.textContent = (i+1)+" / "+n;
     }
     function go(k){ i=(k+n)%n; render(); }
-    prev.addEventListener("click",function(){go(i-1)});
-    next.addEventListener("click",function(){go(i+1)});
     render();
     car.tabIndex=0;
     car.addEventListener("keydown",function(e){ if(e.key==="ArrowLeft")go(i-1); if(e.key==="ArrowRight")go(i+1); });
@@ -752,6 +868,154 @@ html,body{overflow-x:clip}
     }
   });
 
+  // ---- Colorful tech tags ----
+  var TECH_HUE = {
+    "unity":210,"c#":271,"blender":25,"psx style":315,"firebase":38,"rest apis":150,
+    "ai integrations":280,"unity hdrp":195,"real-time lighting":48,"iluminación en tiempo real":48,
+    "rmv":190,"birefnet lite":260,"rmbg 2.0":340,"modnet":170,"mediapipe":120,
+    "react":193,"typescript":211,"javascript":50,"vite":272,"tailwind css":190,"css":211,"vercel":0,
+    "git":14,"automation systems":160,"sistemas de automatización":160,"after effects":265,
+    "premiere pro":255,"photoshop":205,"audition":140
+  };
+  function techHue(name){
+    var k = name.trim().toLowerCase();
+    if(TECH_HUE[k]!=null) return TECH_HUE[k];
+    var h=0; for(var c=0;c<k.length;c++){ h = k.charCodeAt(c) + ((h<<5)-h); }
+    return Math.abs(h)%360;
+  }
+  function paintTags(scope){
+    (scope||document).querySelectorAll(".tags span,.chips span").forEach(function(s){
+      var hue = techHue(s.textContent);
+      s.style.color = "hsl("+hue+",90%,76%)";
+      s.style.background = "hsla("+hue+",80%,55%,.14)";
+      s.style.boxShadow = "inset 0 0 0 1px hsla("+hue+",80%,62%,.38)";
+    });
+  }
+  paintTags(document);
+
+  // ---- Project detail modal ----
+  var PROJECTS = {
+    between:{
+      role_en:"Developer & Technical Artist", role_es:"Desarrollador y Artista Técnico",
+      title:"Between Songs & Demons",
+      lead_en:"A retro-horror title channelling the grain, fog and limited palette of the PlayStation 1 era. I owned gameplay programming, low-poly asset creation and the technical pipeline that keeps an authentic PSX look running at a stable framerate.",
+      lead_es:"Un título de retro-horror que captura el grano, la niebla y la paleta limitada de la era PlayStation 1. Me encargué de la programación de gameplay, la creación de assets low-poly y el pipeline técnico que mantiene un look PSX auténtico con framerate estable.",
+      feats_en:["Gameplay programming in C# (inventory, interaction, scares)","Hand-made low-poly assets with PSX-style texturing","Vertex jitter, affine mapping and dithering shaders","Atmospheric environment & level design","Performance optimization for a locked retro framerate","Full technical implementation end to end"],
+      feats_es:["Programación de gameplay en C# (inventario, interacción, sustos)","Assets low-poly hechos a mano con texturizado estilo PSX","Shaders de vertex jitter, mapeo afín y dithering","Diseño de entornos y niveles atmosféricos","Optimización para un framerate retro fijo","Implementación técnica completa de punta a punta"],
+      tags:["Unity","C#","Blender","PSX style"],
+      links:[]
+    },
+    alloy:{
+      role_en:"Founder & Lead Developer", role_es:"Fundador y Desarrollador Principal",
+      title:"Alloy, AI Receptionist",
+      lead_en:"A commercial AI receptionist that lives inside WhatsApp. Alloy answers customers, qualifies leads, books appointments and pushes everything into the business CRM, replacing hours of manual front-desk work with automated, on-brand conversations.",
+      lead_es:"Un recepcionista con IA comercial que vive dentro de WhatsApp. Alloy responde clientes, califica leads, agenda turnos y envía todo al CRM del negocio, reemplazando horas de trabajo manual de recepción con conversaciones automatizadas y con identidad de marca.",
+      feats_en:["AI-driven customer conversations on WhatsApp","Automated lead qualification & routing","Appointment scheduling synced to calendars","CRM integration and workflow automation","Analytics dashboard for conversations & conversions","Built and shipped as a real commercial product"],
+      feats_es:["Conversaciones con clientes impulsadas por IA en WhatsApp","Calificación y derivación automática de leads","Agendamiento de turnos sincronizado con calendarios","Integración con CRM y automatización de flujos","Panel de analítica de conversaciones y conversiones","Construido y lanzado como producto comercial real"],
+      tags:["C#","Firebase","REST APIs","AI Integrations"],
+      links:[]
+    },
+    light:{
+      role_en:"Simulation Developer", role_es:"Desarrollador de Simulación",
+      title_en:"Light Pollution Impact Study", title_es:"Estudio de Impacto de Contaminación Lumínica",
+      lead_en:"A real-time environmental simulation that recreates, from accurate topographic and site-plan data, how vehicle headlights from a proposed residential road would spill onto existing homes in Massachusetts at night.",
+      lead_es:"Una simulación ambiental en tiempo real que recrea, a partir de datos topográficos y de planos precisos, cómo las luces de los vehículos de un camino residencial propuesto se proyectarían sobre viviendas existentes en Massachusetts durante la noche.",
+      feats_en:["Real-world terrain rebuilt from topographic data","Physically-based headlight & HDRP lighting","Interactive vehicle paths along the proposed road","Interior and exterior intrusion viewpoints","Submitted as technical evidence to the Plymouth ZBA","Helped communicate environmental impact clearly"],
+      feats_es:["Terreno real reconstruido desde datos topográficos","Iluminación de faros e HDRP basada en física","Recorridos de vehículos interactivos sobre el camino propuesto","Puntos de vista de intrusión interior y exterior","Presentada como evidencia técnica ante el ZBA de Plymouth","Ayudó a comunicar el impacto ambiental con claridad"],
+      tags:["Unity HDRP","Blender","C#","Real-time lighting"],
+      links:[]
+    },
+    videobooth:{
+      role_en:"Lead Software Developer", role_es:"Desarrollador de Software Principal",
+      title:"Background Remover, VideoBooth",
+      lead_en:"A professional desktop app that removes backgrounds from video and image sequences. It combines several state-of-the-art segmentation models into one unified workflow, with a timeline, model selection and precise edge masking for production use.",
+      lead_es:"Una app de escritorio profesional que elimina fondos de videos y secuencias de imágenes. Combina varios modelos de segmentación de última generación en un flujo unificado, con línea de tiempo, selección de modelos y enmascarado de bordes preciso para uso en producción.",
+      feats_en:["Multi-model AI segmentation pipeline","Video and image-sequence background removal","Timeline UI with per-model selection","Precise edge & fine-hair masking","Production-ready commercial desktop deployment","Optimized batch processing"],
+      feats_es:["Pipeline de segmentación con IA multi-modelo","Quitado de fondo en video y secuencias de imágenes","Interfaz con línea de tiempo y selección por modelo","Enmascarado preciso de bordes y cabello fino","Despliegue de escritorio comercial listo para producción","Procesamiento por lotes optimizado"],
+      tags:["RMV","BiRefNet Lite","RMBG 2.0","MODNet","MediaPipe"],
+      links:[]
+    }
+  };
+  var modal = document.getElementById("projectModal");
+  var pmImg = document.getElementById("pm-img"), pmThumbs = document.getElementById("pm-thumbs");
+  var pmRole = document.getElementById("pm-role"), pmTitle = document.getElementById("pm-title"), pmLead = document.getElementById("pm-lead");
+  var pmFeats = document.getElementById("pm-feats"), pmTags = document.getElementById("pm-tags"), pmLinks = document.getElementById("pm-links");
+  function openModal(id){
+    var d = PROJECTS[id]; if(!d) return;
+    var L = lang;
+    pmRole.textContent = d["role_"+L] || d.role_en;
+    pmTitle.textContent = d.title || d["title_"+L] || d.title_en;
+    pmLead.textContent = d["lead_"+L] || d.lead_en;
+    pmFeats.innerHTML = "";
+    (d["feats_"+L] || d.feats_en || []).forEach(function(f){ var li=document.createElement("li"); li.textContent=f; pmFeats.appendChild(li); });
+    pmTags.innerHTML = "";
+    (d.tags||[]).forEach(function(t){ var s=document.createElement("span"); s.textContent=t; pmTags.appendChild(s); });
+    paintTags(pmTags.parentNode);
+    pmLinks.innerHTML = "";
+    (d.links||[]).forEach(function(lk){ var a=document.createElement("a"); a.className="btn btn-ghost"; a.href=lk.url; a.target="_blank"; a.rel="noopener"; a.textContent=lk.label; pmLinks.appendChild(a); });
+    // images from the matching project's carousel
+    var proj = document.querySelector('.project[data-project="'+id+'"]');
+    var imgs = proj ? [].slice.call(proj.querySelectorAll(".carousel .slide img")) : [];
+    pmThumbs.innerHTML = "";
+    if(imgs.length){
+      pmImg.src = imgs[0].src; pmImg.alt = imgs[0].alt || "";
+      imgs.forEach(function(im,k){
+        var t=document.createElement("img"); t.src=im.src; t.alt=im.alt||""; if(k===0)t.className="active";
+        t.addEventListener("click",function(){ pmImg.src=im.src; pmImg.alt=im.alt||"";
+          pmThumbs.querySelectorAll("img").forEach(function(x){x.classList.remove("active")}); t.classList.add("active"); });
+        pmThumbs.appendChild(t);
+      });
+    }
+    modal.classList.add("open"); document.body.style.overflow="hidden";
+  }
+  function closeModal(){ modal.classList.remove("open"); document.body.style.overflow=""; }
+  document.querySelectorAll("[data-detail]").forEach(function(btn){
+    btn.addEventListener("click",function(){ openModal(btn.getAttribute("data-detail")); });
+  });
+  modal.querySelector(".modal-close").addEventListener("click",closeModal);
+  modal.addEventListener("click",function(e){ if(e.target===modal) closeModal(); });
+  document.addEventListener("keydown",function(e){ if(e.key==="Escape") closeModal(); });
+
+  // ---- Testimonials (from testimonials.json) ----
+  var FALLBACK_TESTIMONIALS = [
+    {name:"Add your testimonials",role_en:"Edit testimonials.json",role_es:"Editá testimonials.json",rating:5,
+     text_en:"This section is loaded from testimonials.json. Open that file to add, edit or remove testimonials, no HTML needed.",
+     text_es:"Esta sección se carga desde testimonials.json. Abrí ese archivo para agregar, editar o quitar testimonios, sin tocar HTML."}
+  ];
+  function renderTestimonials(list){
+    var grid = document.getElementById("testimonials-grid");
+    if(!grid) return;
+    grid.innerHTML = "";
+    list.forEach(function(t){
+      var card = document.createElement("div"); card.className="t-card reveal";
+      var q = document.createElement("div"); q.className="t-quote"; q.textContent="\u201C";
+      var rating = Math.max(0, Math.min(5, t.rating||0));
+      var stars = document.createElement("div"); stars.className="t-stars"; stars.textContent = rating ? "\u2605".repeat(rating) : "";
+      var txt = document.createElement("p"); txt.className="t-text";
+      txt.setAttribute("data-en", t.text_en||""); txt.setAttribute("data-es", t.text_es||t.text_en||"");
+      txt.textContent = (lang==="es" ? (t.text_es||t.text_en) : t.text_en) || "";
+      var who = document.createElement("div"); who.className="t-who";
+      var av;
+      if(t.avatar){ av=document.createElement("img"); av.className="t-av"; av.src=t.avatar; av.alt=t.name||""; av.loading="lazy"; }
+      else { av=document.createElement("div"); av.className="t-av ph"; av.textContent=(t.name||"?").trim().charAt(0).toUpperCase(); }
+      var info = document.createElement("div");
+      var nm = document.createElement("div"); nm.className="t-name"; nm.textContent=t.name||"";
+      var rl = document.createElement("div"); rl.className="t-role";
+      rl.setAttribute("data-en", t.role_en||""); rl.setAttribute("data-es", t.role_es||t.role_en||"");
+      rl.textContent = (lang==="es" ? (t.role_es||t.role_en) : t.role_en) || "";
+      info.appendChild(nm); info.appendChild(rl);
+      who.appendChild(av); who.appendChild(info);
+      if(rating) card.appendChild(stars);
+      card.appendChild(q); card.appendChild(txt); card.appendChild(who);
+      grid.appendChild(card);
+    });
+    // re-observe new reveal cards & re-apply language
+    grid.querySelectorAll(".reveal").forEach(function(el){ if(window.__cvIO){ window.__cvIO.observe(el); } else { el.classList.add("in"); } });
+  }
+  fetch("testimonials.json", {cache:"no-store"})
+    .then(function(r){ if(!r.ok) throw 0; return r.json(); })
+    .then(function(data){ renderTestimonials(Array.isArray(data) ? data : (data.testimonials||[])); })
+    .catch(function(){ renderTestimonials(FALLBACK_TESTIMONIALS); });
 
 
   // ---- Reveal on scroll ----
@@ -759,6 +1023,7 @@ html,body{overflow-x:clip}
     var io = new IntersectionObserver(function(entries){
       entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add("in"); io.unobserve(en.target);} });
     },{threshold:.12});
+    window.__cvIO = io;
     document.querySelectorAll(".reveal").forEach(function(el){ io.observe(el); });
   } else {
     document.querySelectorAll(".reveal").forEach(function(el){ el.classList.add("in"); });
