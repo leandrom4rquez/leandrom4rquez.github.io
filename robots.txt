@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://leandrom4rquez.github.io/sitemap.xml
