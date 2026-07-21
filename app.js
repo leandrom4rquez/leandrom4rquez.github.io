@@ -1087,7 +1087,7 @@
         
         var filterVal = btn.getAttribute("data-filter");
         projects.forEach(function(p) {
-          var pCat = p.getAttribute("data-project") || "other";
+          var pCat = p.getAttribute("data-category") || "other";
           if (filterVal === "all" || pCat === filterVal) {
             p.classList.remove("hidden");
           } else {

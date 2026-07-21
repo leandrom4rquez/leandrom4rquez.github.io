@@ -186,6 +186,7 @@ section:hover::before {
   opacity: 0;
   transform: translateY(15px);
   animation: pageIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  overflow-x: hidden;
 }
 @keyframes pageIn {
   to {
@@ -827,6 +828,35 @@ header.nav.nav-scrolled {
   color: #fff;
   border-color: transparent;
   box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+}
+
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 48px;
+  justify-content: center;
+}
+.filter-btn {
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: 100px;
+  padding: 8px 18px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-family: inherit;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+.filter-btn:hover {
+  color: var(--text);
+  border-color: var(--accent);
+}
+.filter-btn.active {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
 }
 
 .project {
@@ -2300,6 +2330,39 @@ footer .brand {
   .scroll-text-track .st-star {
     font-size: 0.9rem;
     padding: 0 4px;
+  }
+}
+
+@media (max-width: 480px) {
+  section {
+    padding: 60px 0;
+  }
+  .hero {
+    padding-top: 60px;
+    padding-bottom: 40px;
+  }
+  .nav-toggle {
+    width: 44px;
+    height: 44px;
+  }
+  .theme-toggle {
+    padding: 12px;
+  }
+  .lang button {
+    padding: 10px 16px;
+  }
+  .btn-linkedin, .btn-upwork {
+    padding: 12px 20px;
+  }
+  .btn-detail {
+    padding: 13px 24px;
+  }
+  .filter-btn {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 18px;
   }
 }
 
