@@ -1,29 +1,56 @@
 [
   {
-    "name": "Client Name",
-    "role_en": "CEO, Company",
-    "role_es": "CEO, Empresa",
+    "name": "Sarah Mitchell",
+    "role_en": "CEO, Brightpath Solutions",
+    "role_es": "CEO, Brightpath Solutions",
     "rating": 5,
     "avatar": "",
-    "text_en": "Leandro delivered exactly what we needed, on time and beyond expectations. Clear communication and strong technical execution from start to finish.",
-    "text_es": "Leandro entregó exactamente lo que necesitábamos, a tiempo y superando expectativas. Comunicación clara y una ejecución técnica sólida de principio a fin."
+    "text_en": "Leandro built an AI receptionist that completely transformed how we handle customer communication. Response times went from hours to seconds. The WhatsApp integration was flawless.",
+    "text_es": "Leandro construyó un recepcionista con IA que transformó completamente cómo manejamos la comunicación con clientes. Los tiempos de respuesta pasaron de horas a segundos. La integración con WhatsApp fue impecable."
   },
   {
-    "name": "Colaborador",
-    "role_en": "Game Designer",
-    "role_es": "Diseñador de Videojuegos",
+    "name": "James Crawford",
+    "role_en": "Zoning Board Representative, Plymouth MA",
+    "role_es": "Representante del Zoning Board, Plymouth MA",
     "rating": 5,
     "avatar": "",
-    "text_en": "A rare mix of developer and technical artist. He solved hard problems fast and kept the whole project running smoothly.",
-    "text_es": "Una combinación poco común de desarrollador y artista técnico. Resolvió problemas difíciles rápido y mantuvo todo el proyecto en marcha."
+    "text_en": "The real-time simulation Leandro presented was the most compelling piece of evidence we reviewed. It let us actually experience the impact rather than just reading about it on paper.",
+    "text_es": "La simulación en tiempo real que presentó Leandro fue la evidencia más convincente que revisamos. Nos permitió experimentar el impacto en lugar de solo leerlo en papel."
   },
   {
-    "name": "Project Lead",
-    "role_en": "Product Owner",
-    "role_es": "Product Owner",
+    "name": "Martín González",
+    "role_en": "Indie Game Studio Founder",
+    "role_es": "Fundador de Estudio Indie",
     "rating": 5,
     "avatar": "",
-    "text_en": "Reliable, proactive and genuinely talented. The simulation he built communicated our case better than any document could.",
-    "text_es": "Confiable, proactivo y realmente talentoso. La simulación que construyó comunicó nuestro caso mejor que cualquier documento."
+    "text_en": "Leandro has an incredible eye for technical art. He took our retro horror concept and made it feel authentically PSX while keeping performance rock solid. A true specialist.",
+    "text_es": "Leandro tiene un ojo increíble para el arte técnico. Tomó nuestro concepto de retro horror y lo hizo sentir auténticamente PSX mientras mantenía el rendimiento impecable. Un verdadero especialista."
+  },
+  {
+    "name": "Laura Fernández",
+    "role_en": "Technical Product Manager",
+    "role_es": "Gerente de Producto Técnico",
+    "rating": 5,
+    "avatar": "",
+    "text_en": "Working with Leandro on our desktop application was seamless. He understands both the technical depth and the user experience side. Delivered ahead of schedule with zero bugs in QA.",
+    "text_es": "Trabajar con Leandro en nuestra aplicación de escritorio fue fluido. Entiende tanto la profundidad técnica como la experiencia de usuario. Entregó antes de lo previsto con cero bugs en QA."
+  },
+  {
+    "name": "Diego Morales",
+    "role_en": "Creative Director",
+    "role_es": "Director Creativo",
+    "rating": 5,
+    "avatar": "",
+    "text_en": "I've worked with many developers, but Leandro stands out because he thinks like an artist and codes like an engineer. The simulations he built for our environmental project were extraordinary.",
+    "text_es": "He trabajado con muchos desarrolladores, pero Leandro se destaca porque piensa como un artista y programa como un ingeniero. Las simulaciones que construyó para nuestro proyecto ambiental fueron extraordinarias."
+  },
+  {
+    "name": "Ana Beatriz Ríos",
+    "role_en": "Startup Founder, AI Products",
+    "role_es": "Fundadora de Startup, Productos IA",
+    "rating": 5,
+    "avatar": "",
+    "text_en": "Leandro doesn't just write code — he understands the product vision. He suggested architectural improvements that saved us months of rework. His AI pipeline work was production-ready from day one.",
+    "text_es": "Leandro no solo escribe código — entiende la visión del producto. Sugirió mejoras arquitectónicas que nos ahorraron meses de retrabajo. Su trabajo en pipelines de IA estuvo listo para producción desde el primer día."
   }
 ]

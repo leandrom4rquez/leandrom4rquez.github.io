@@ -15,10 +15,12 @@
 <meta name="twitter:title" content="Leandro Nahuel Marquez, AI Software Developer" />
 <meta name="twitter:description" content="AI-powered software, computer vision, interactive apps and real-time simulations." />
 <link rel="icon" type="image/png" href="images/logo.png" />
-<link rel="stylesheet" href="colors.css" />
+<link rel="stylesheet" href="style.css" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+<script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -32,404 +34,66 @@
     "https://linkedin.com/in/leandro-marquez-it",
     "https://upwork.com/freelancers/~014024ca7ade29baed"
   ],
-  "knowsAbout": ["AI Software Development","Computer Vision","Real-Time Simulation","Unity","Blender","C#"]
+  "knowsAbout": ["AI Software Development","Computer Vision","Real-Time Simulation","Unity","Blender","C#","Blender Addons","Augmented Reality","Vuforia","Python","Render Engine Development"]
 }
 </script>
-<style>
-/* Main colors live in colors.css (loaded above). Edit that file to recolor the site. */
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  margin:0;background:var(--bg);color:var(--text);
-  font-family:"Space Grotesk",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
-  line-height:1.6;-webkit-font-smoothing:antialiased;
-  background-image:radial-gradient(900px 500px at 80% -5%,rgba(91,140,255,.10),transparent 60%),radial-gradient(700px 500px at 0% 10%,rgba(154,108,255,.07),transparent 55%);
-}
-.serif{font-family:"Bricolage Grotesque","Space Grotesk",system-ui,sans-serif;font-weight:800;letter-spacing:-.025em}
-a{color:inherit;text-decoration:none}
-img{display:block;max-width:100%}
-.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
-.eyebrow{font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--accent);font-weight:600}
-h1,h2,h3{margin:0;font-weight:600;line-height:1.08}
-section{padding:96px 0;border-top:1px solid var(--line)}
-.section-head{max-width:760px;margin-bottom:48px}
-.section-head h2{font-size:clamp(1.9rem,4vw,2.9rem);margin:14px 0 12px}
-.section-head p{color:var(--muted);font-size:1.05rem;margin:0}
-
-/* NAV */
-header.nav{position:sticky;top:0;z-index:60;backdrop-filter:blur(12px);
-  background:rgba(16,13,11,.72);border-bottom:1px solid var(--line)}
-.nav-inner{display:flex;align-items:center;justify-content:space-between;height:66px}
-.brand{display:flex;align-items:center;gap:10px;font-weight:600;letter-spacing:.02em}
-.brand .mark{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;
-  background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#0a0e1a;font-family:"Fraunces",serif;font-weight:700}
-.nav-links{display:flex;gap:28px;align-items:center}
-.nav-links a{color:var(--muted);font-size:.92rem;transition:color .2s}
-.nav-links a:hover{color:var(--text)}
-.nav-right{display:flex;align-items:center;gap:14px}
-.pill{display:inline-flex;align-items:center;gap:7px;font-size:.78rem;color:var(--accent);
-  border:1px solid var(--accent-soft);background:var(--accent-soft);padding:6px 12px;border-radius:999px;font-weight:500}
-.pill .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 0 rgba(91,140,255,.6);animation:pulse 2s infinite}
-@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(91,140,255,.5)}70%{box-shadow:0 0 0 8px rgba(91,140,255,0)}100%{box-shadow:0 0 0 0 rgba(91,140,255,0)}}
-.lang{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;font-size:.8rem}
-.lang button{background:transparent;border:0;color:var(--muted);padding:6px 12px;cursor:pointer;font-family:inherit;font-weight:600;letter-spacing:.04em}
-.lang button.active{background:var(--accent,#5b8cff);color:#0a0e1a}
-.btn{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:12px 22px;font-weight:600;font-size:.95rem;cursor:pointer;transition:transform .15s,background .2s;border:1px solid transparent;font-family:inherit}
-.btn:hover{transform:translateY(-2px)}
-.btn-primary{background:linear-gradient(135deg,var(--accent,#5b8cff),var(--accent-2,#9a6cff));color:#0a0e1a}
-.btn-ghost{border-color:var(--line);color:var(--text);background:var(--surface)}
-.nav-toggle{display:none}
-
-/* HERO */
-.hero{padding:88px 0 96px;border-top:0}
-.hero-grid{display:grid;grid-template-columns:1.25fr .85fr;gap:56px;align-items:center}
-.hero h1{font-size:clamp(2.6rem,6vw,4.6rem);letter-spacing:-.02em;margin:18px 0 0}
-.hero h1 em{font-style:italic;color:var(--accent)}
-.hero .roles{margin:22px 0 0;color:var(--muted);font-size:1.02rem;font-weight:500}
-.hero .lead{margin:22px 0 0;color:var(--text);font-size:1.18rem;max-width:38ch}
-.hero .cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
-.hero .meta{margin-top:30px;display:flex;flex-wrap:wrap;gap:20px;color:var(--faint);font-size:.9rem}
-.hero .meta b{color:var(--muted);font-weight:500}
-.portrait{position:relative}
-.portrait img{width:100%;border-radius:24px;border:1px solid var(--line);box-shadow:var(--shadow);
-  filter:saturate(1.05) contrast(1.02)}
-.portrait::after{content:"";position:absolute;inset:0;border-radius:24px;
-  background:linear-gradient(180deg,transparent 55%,rgba(16,13,11,.55));pointer-events:none}
-.portrait .tag{position:absolute;left:18px;bottom:18px;z-index:2;font-size:.8rem;color:var(--text);
-  background:rgba(16,13,11,.7);backdrop-filter:blur(6px);border:1px solid var(--line);padding:8px 14px;border-radius:12px}
-
-/* WHAT I DO */
-.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:26px 22px;transition:transform .2s,border-color .2s}
-.card:hover{transform:translateY(-4px);border-color:var(--accent-2)}
-.card .ic{width:42px;height:42px;border-radius:11px;background:var(--accent-soft);display:grid;place-items:center;margin-bottom:16px;font-size:1.2rem}
-.card h3{font-size:1.12rem;margin-bottom:8px}
-.card p{color:var(--muted);font-size:.92rem;margin:0}
-
-/* PROJECTS */
-.project{display:grid;grid-template-columns:.85fr 1.15fr;gap:48px;align-items:center;margin-bottom:84px}
-.project:last-child{margin-bottom:0}
-.project.flip .pinfo{order:2}
-.pinfo .role{color:var(--accent);font-weight:600;font-size:.82rem;letter-spacing:.04em;text-transform:uppercase}
-.pinfo h3{font-size:clamp(1.6rem,3vw,2.3rem);margin:10px 0 14px}
-.pinfo p{color:var(--muted);margin:0 0 18px}
-.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
-.tags span{font-size:.76rem;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:5px 11px;background:var(--bg-2)}
-.outcome{margin-top:16px;padding:14px 16px;border-left:2px solid var(--accent);background:var(--accent-soft);border-radius:0 10px 10px 0;font-size:.92rem;color:var(--text)}
-.feat-list{list-style:none;padding:0;margin:14px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:6px 18px}
-.feat-list li{position:relative;padding-left:18px;color:var(--muted);font-size:.9rem}
-.feat-list li::before{content:"";position:absolute;left:0;top:.6em;width:6px;height:6px;border-radius:50%;background:var(--accent)}
-
-/* CAROUSEL */
-.carousel{position:relative;border-radius:20px;overflow:hidden;border:1px solid var(--line);background:#000;box-shadow:var(--shadow)}
-.carousel .track{display:flex;transition:transform .55s cubic-bezier(.6,.01,.2,1)}
-.carousel .slide{min-width:100%;position:relative;aspect-ratio:16/10}
-.carousel .slide img{width:100%;height:100%;object-fit:cover;cursor:zoom-in}
-.carousel .cap{position:absolute;left:0;right:0;bottom:0;padding:30px 18px 14px;font-size:.82rem;color:#f3ece3;
-  background:linear-gradient(transparent,rgba(0,0,0,.78))}
-.car-btn{position:absolute;top:50%;transform:translateY(-50%);z-index:3;width:42px;height:42px;border-radius:50%;
-  border:1px solid rgba(255,255,255,.18);background:rgba(16,13,11,.55);backdrop-filter:blur(6px);color:#fff;cursor:pointer;
-  font-size:1.1rem;display:grid;place-items:center;transition:background .2s}
-.car-btn:hover{background:var(--accent);color:#0a0e1a;border-color:transparent}
-.car-btn.prev{left:12px}.car-btn.next{right:12px}
-.dots{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);display:flex;gap:7px;z-index:3}
-.dots button{width:8px;height:8px;border-radius:50%;border:0;background:rgba(255,255,255,.35);cursor:pointer;padding:0;transition:all .2s}
-.dots button.active{background:var(--accent);width:22px;border-radius:5px}
-.counter{position:absolute;top:12px;right:14px;z-index:3;font-size:.74rem;color:#fff;background:rgba(16,13,11,.6);
-  border:1px solid var(--line);padding:4px 10px;border-radius:999px}
-
-/* HIGHLIGHT (SAVIA) */
-.highlight{display:grid;grid-template-columns:auto 1fr;gap:26px;align-items:center;background:linear-gradient(135deg,var(--surface),var(--bg-2));
-  border:1px solid var(--line);border-radius:var(--radius);padding:30px;margin-top:46px}
-.highlight .rank{text-align:center;padding-right:26px;border-right:1px solid var(--line)}
-.highlight .rank .n{font-family:"Fraunces",serif;font-size:2.6rem;color:var(--accent);line-height:1}
-.highlight .rank .l{font-size:.74rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
-.highlight h3{font-size:1.3rem;margin-bottom:6px}
-.highlight p{color:var(--muted);margin:0;font-size:.95rem}
-
-/* SKILLS */
-.skill-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
-.skill-block{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:24px}
-.skill-block h3{font-size:1.05rem;color:var(--accent);margin-bottom:14px;letter-spacing:.02em}
-.chips{display:flex;flex-wrap:wrap;gap:8px}
-.chips span{font-size:.84rem;padding:7px 13px;border-radius:999px;background:var(--bg-2);border:1px solid var(--line);color:var(--text)}
-
-/* INTEREST / OPEN */
-.two-col{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:30px}
-.panel h3{font-size:1.25rem;margin-bottom:16px}
-.tick{list-style:none;padding:0;margin:0;display:grid;gap:10px}
-.tick li{position:relative;padding-left:26px;color:var(--muted)}
-.tick li::before{content:"→";position:absolute;left:0;color:var(--accent);font-weight:700}
-.cta-row{margin-top:22px;display:flex;flex-wrap:wrap;gap:12px}
-
-/* FOOTER */
-footer{padding:60px 0 50px;border-top:1px solid var(--line);background:var(--bg-2)}
-.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px;align-items:center}
-.foot .links{display:flex;flex-wrap:wrap;gap:22px}
-.foot a{color:var(--muted);font-size:.92rem;transition:color .2s}
-.foot a:hover{color:var(--accent)}
-.foot .copy{color:var(--faint);font-size:.82rem;width:100%;margin-top:8px}
-
-/* LIGHTBOX */
-.lightbox{position:fixed;inset:0;z-index:200;background:rgba(8,6,5,.92);display:none;align-items:center;justify-content:center;padding:30px;cursor:zoom-out}
-.lightbox.open{display:flex}
-.lightbox img{max-width:92vw;max-height:88vh;border-radius:14px;border:1px solid var(--line);box-shadow:var(--shadow)}
-.lightbox .close{position:absolute;top:20px;right:24px;font-size:2rem;color:#fff;cursor:pointer;line-height:1}
-
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
-.reveal.in{opacity:1;transform:none}
-
-@media(max-width:920px){
-  .hero-grid{grid-template-columns:1fr;gap:36px}
-  .portrait{max-width:360px}
-  .cards{grid-template-columns:1fr 1fr}
-  .project,.project.flip .pinfo{grid-template-columns:1fr;order:0}
-  .project .pinfo{order:0}
-  .skill-grid,.two-col{grid-template-columns:1fr}
-  .nav-links{display:none}
-  .feat-list{grid-template-columns:1fr}
-}
-@media(max-width:560px){
-  .cards{grid-template-columns:1fr}
-  .highlight{grid-template-columns:1fr}
-  .highlight .rank{border-right:0;border-bottom:1px solid var(--line);padding:0 0 18px;margin-bottom:4px}
-  section{padding:70px 0}
-}
-
-/* ===== refinements ===== */
-h1.serif,.hero h1{font-weight:800}
-.highlight .rank .n{font-family:"Bricolage Grotesque","Space Grotesk",sans-serif}
-body{background-image:none}
-/* moving background lights */
-.bg-orbs{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
-.bg-orbs span{position:absolute;border-radius:50%;filter:blur(72px);opacity:.55;mix-blend-mode:screen;will-change:transform}
-.bg-orbs .o1{width:44vw;height:44vw;left:-9vw;top:-7vw;background:radial-gradient(circle,rgba(91,140,255,.55),transparent 68%);animation:drift1 26s ease-in-out infinite}
-.bg-orbs .o2{width:40vw;height:40vw;right:-11vw;top:16vh;background:radial-gradient(circle,rgba(154,108,255,.5),transparent 68%);animation:drift2 32s ease-in-out infinite}
-.bg-orbs .o3{width:32vw;height:32vw;left:24vw;bottom:-14vw;background:radial-gradient(circle,rgba(47,214,214,.30),transparent 70%);animation:drift3 38s ease-in-out infinite}
-@keyframes drift1{0%,100%{transform:translate(0,0)}50%{transform:translate(8vw,6vh)}}
-@keyframes drift2{0%,100%{transform:translate(0,0)}50%{transform:translate(-7vw,5vh)}}
-@keyframes drift3{0%,100%{transform:translate(0,0)}50%{transform:translate(6vw,-7vh)}}
-main,footer{position:relative;z-index:1}
-header.nav{position:sticky;top:0;z-index:70}
-@media(prefers-reduced-motion:reduce){.bg-orbs span{animation:none}}
-/* brand mark = real logo */
-.brand .mark{width:30px;height:30px;border-radius:0;background:none;color:inherit;font-family:inherit;object-fit:contain;display:block}
-/* creative surfaces, replace generic outlines */
-section{border-top:1px solid rgba(245,236,227,.06)}
-header.nav{border-bottom:1px solid rgba(245,236,227,.06)}
-footer{border-top:1px solid rgba(245,236,227,.06)}
-.hero{border-top:0}
-.hero-grid{grid-template-columns:1fr;max-width:900px;margin:0 auto}
-.hero .lead{max-width:48ch}
-.hero h1{font-size:clamp(3rem,7.2vw,5.6rem);letter-spacing:-.03em}
-.card{border:0;background:linear-gradient(180deg,rgba(245,236,227,.05),rgba(245,236,227,.015));box-shadow:inset 0 1px 0 rgba(245,236,227,.07),0 18px 42px -28px rgba(0,0,0,.95);position:relative}
-.card:hover{border:0;box-shadow:inset 0 1px 0 rgba(91,140,255,.3),0 26px 54px -26px rgba(0,0,0,1)}
-.card .ic{color:var(--accent);background:radial-gradient(circle at 32% 30%,rgba(91,140,255,.24),rgba(91,140,255,.05));font-size:0}
-.card .ic svg{display:block}
-.btn-ghost{border:0;background:rgba(245,236,227,.06);box-shadow:inset 0 1px 0 rgba(245,236,227,.08)}
-.btn-ghost:hover{background:rgba(245,236,227,.11)}
-.btn-primary{box-shadow:0 12px 32px -12px rgba(91,140,255,.6)}
-.btn-icon{padding:0;width:46px;height:46px;border-radius:50%;display:inline-grid;place-items:center;color:var(--text);background:rgba(238,242,251,.06);box-shadow:inset 0 1px 0 rgba(238,242,251,.08);transition:transform .15s,background .2s,color .2s}
-.btn-icon:hover{background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#0a0e1a}
-.toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(20px);z-index:300;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#0a0e1a;font-weight:600;font-size:.9rem;padding:11px 20px;border-radius:999px;box-shadow:0 16px 40px -16px rgba(0,0,0,.9);opacity:0;pointer-events:none;transition:opacity .25s,transform .25s}
-.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
-.yt-sec{padding:54px 0 60px}
-.yt-card{display:flex;align-items:center;gap:18px;max-width:560px;margin:0 auto;padding:18px 22px;border-radius:16px;background:linear-gradient(180deg,rgba(238,242,251,.05),rgba(238,242,251,.015));box-shadow:inset 0 1px 0 rgba(238,242,251,.06),0 16px 38px -28px rgba(0,0,0,.95);transition:transform .2s,box-shadow .2s}
-.yt-card:hover{transform:translateY(-3px);box-shadow:inset 0 1px 0 rgba(154,108,255,.3),0 22px 48px -26px rgba(0,0,0,1)}
-.yt-ic{flex:0 0 auto;width:42px;height:42px;border-radius:11px;display:grid;place-items:center;color:var(--accent-2);background:radial-gradient(circle at 32% 30%,rgba(154,108,255,.24),rgba(154,108,255,.05))}
-.yt-txt{display:flex;flex-direction:column;gap:3px}
-.yt-txt strong{font-size:1rem;color:var(--text);font-weight:600}
-.yt-txt small{color:var(--muted);font-size:.84rem}
-.yt-arrow{margin-left:auto;color:var(--accent);font-size:1.2rem;transition:transform .2s}
-.yt-card:hover .yt-arrow{transform:translateX(4px)}
-.chips span{border:0;background:rgba(245,236,227,.06)}
-.tags span{border:0;background:rgba(245,236,227,.05)}
-.panel,.skill-block{border:0;background:linear-gradient(180deg,rgba(245,236,227,.05),rgba(245,236,227,.015));box-shadow:inset 0 1px 0 rgba(245,236,227,.06),0 18px 42px -30px rgba(0,0,0,.95)}
-.highlight{border:0;box-shadow:inset 0 1px 0 rgba(245,236,227,.06),0 20px 52px -30px rgba(0,0,0,.95)}
-.highlight .rank{border-right-color:rgba(245,236,227,.1)}
-.carousel{border:0;box-shadow:0 30px 64px -30px rgba(0,0,0,.95)}
-.car-btn{border:0;background:rgba(16,13,11,.4);backdrop-filter:blur(8px)}
-.car-btn:hover{background:var(--accent)}
-.outcome{background:rgba(91,140,255,.12)}
-.lightbox img{border:0}
-.meta .loc{display:inline-flex;align-items:center;gap:6px;color:var(--accent)}
-.meta .loc span{color:var(--faint)}
-/* footer small subtle photo */
-footer .brand{gap:13px;align-items:center}
-footer .brand .mark{width:24px;height:24px}
-.foot-photo{width:44px;height:44px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 1px rgba(245,236,227,.14),0 8px 20px -10px rgba(0,0,0,.85)}
-
-/* hero background, subtle darkened dev setup */
-.hero{position:relative;overflow:hidden}
-.hero::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(180deg,rgba(8,11,22,.42),rgba(8,11,22,.72)),linear-gradient(90deg,rgba(8,11,22,.78),rgba(8,11,22,.30) 55%,rgba(8,11,22,.55)),url("images/hero-background.webp");background-size:cover;background-position:center right;background-repeat:no-repeat}
-.hero .wrap{position:relative;z-index:1}
-
-/* ===== warm tone, grid, badge, dividers, marquee, stagger ===== */
-/* faint warm glow mixed into the dark base */
-body{background-image:radial-gradient(1100px 600px at 88% -8%,rgba(255,176,92,.06),transparent 60%),radial-gradient(900px 600px at 5% 12%,rgba(154,108,255,.05),transparent 60%)}
-/* subtle background grid */
-.bg-grid{position:fixed;inset:0;z-index:0;pointer-events:none;
-  background-image:linear-gradient(rgba(245,236,227,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(245,236,227,.035) 1px,transparent 1px);
-  background-size:64px 64px;
-  -webkit-mask-image:radial-gradient(circle at 50% 38%,#000,transparent 78%);
-  mask-image:radial-gradient(circle at 50% 38%,#000,transparent 78%)}
-/* warm 4th orb + warm the others a touch */
-.bg-orbs .o4{width:38vw;height:38vw;right:6vw;bottom:-12vw;background:radial-gradient(circle,rgba(255,176,92,.34),transparent 70%);animation:drift1 30s ease-in-out infinite}
-@media(prefers-reduced-motion:reduce){.bg-orbs span{animation:none}}
-
-/* redesign Open to work badge (no outline) */
-.pill{border:0;background:linear-gradient(135deg,rgba(255,176,92,.18),rgba(91,140,255,.16));
-  color:var(--text);box-shadow:inset 0 1px 0 rgba(255,236,227,.14),0 8px 22px -12px rgba(255,176,92,.5);
-  padding:7px 14px;font-weight:600;letter-spacing:.01em}
-.pill .dot{background:var(--warm);box-shadow:0 0 0 0 rgba(255,176,92,.6);animation:pulseW 2s infinite}
-@keyframes pulseW{0%{box-shadow:0 0 0 0 rgba(255,176,92,.55)}70%{box-shadow:0 0 0 9px rgba(255,176,92,0)}100%{box-shadow:0 0 0 0 rgba(255,176,92,0)}}
-
-/* dividers between projects */
-.project{position:relative}
-.project + .project::before{content:"";position:absolute;left:0;right:0;top:-44px;height:1px;
-  background:linear-gradient(90deg,transparent,rgba(245,236,227,.18),transparent)}
-
-/* richer staggered reveals */
-.reveal{transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
-.cards .card:nth-child(2){transition-delay:.07s}
-.cards .card:nth-child(3){transition-delay:.14s}
-.cards .card:nth-child(4){transition-delay:.21s}
-.skill-grid .skill-block:nth-child(2){transition-delay:.07s}
-.skill-grid .skill-block:nth-child(3){transition-delay:.14s}
-.skill-grid .skill-block:nth-child(4){transition-delay:.21s}
-
-/* bottom auto marquee */
-.marquee-sec{padding:64px 0 34px;overflow:hidden}
-.marquee-sec .lab{text-align:center;color:var(--faint);font-size:.74rem;letter-spacing:.28em;text-transform:uppercase;margin-bottom:26px}
-.marquee{display:flex;flex-direction:column;gap:18px;overflow:hidden;
-  -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
-  mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
-.marquee-row{display:flex;gap:18px;width:max-content;will-change:transform}
-.marquee-row.left{animation:mqLeft 46s linear infinite}
-.marquee-row.right{animation:mqRight 52s linear infinite}
-.marquee-row img{height:148px;width:auto;border-radius:14px;object-fit:cover;
-  box-shadow:0 18px 40px -26px rgba(0,0,0,.95);opacity:.92;transition:opacity .3s,transform .3s}
-.marquee-row img:hover{opacity:1;transform:translateY(-4px)}
-.marquee:hover .marquee-row{animation-play-state:paused}
-@keyframes mqLeft{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-@keyframes mqRight{from{transform:translateX(-50%)}to{transform:translateX(0)}}
-@media(prefers-reduced-motion:reduce){.marquee-row{animation:none}}
-@media(max-width:560px){.marquee-row img{height:108px}}
-
-/* ===== warm accents on buttons + panels ===== */
-.btn-primary{background:linear-gradient(135deg,var(--warm,#ffb05c),var(--warm-2,#ff8a5c));color:#1a1206;box-shadow:0 12px 32px -12px rgba(255,138,92,.6)}
-.btn-primary:hover{box-shadow:0 16px 38px -12px rgba(255,138,92,.75)}
-.btn-icon:hover{background:linear-gradient(135deg,var(--warm,#ffb05c),var(--accent,#5b8cff));color:#0a0e1a}
-.lang button.active{background:linear-gradient(135deg,var(--warm,#ffb05c),var(--warm-2,#ff8a5c));color:#1a1206}
-.card .ic{color:var(--warm);background:radial-gradient(circle at 32% 30%,rgba(255,176,92,.22),rgba(255,176,92,.05))}
-.card:hover{box-shadow:inset 0 1px 0 rgba(255,176,92,.32),0 26px 54px -26px rgba(0,0,0,1)}
-.panel,.skill-block{box-shadow:inset 0 1px 0 rgba(255,176,92,.10),0 18px 42px -30px rgba(0,0,0,.95)}
-.eyebrow{color:var(--warm)}
-.meta .loc{color:var(--warm)}
-.outcome{background:rgba(255,176,92,.12)}
-.car-btn:hover{background:var(--warm)}
-
-/* ===== mobile nav + safety ===== */
-/* overflow-x:clip (not hidden) avoids creating a scroll container that breaks position:sticky */
-html,body{overflow-x:clip}
-.nav-inner{gap:12px}
-.brand{min-width:0}
-.brand span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.nav-right{flex-shrink:0}
-@media(max-width:680px){
-  .nav-right .pill{display:none}
-}
-@media(max-width:560px){
-  .nav-inner{height:60px}
-  .brand{font-size:.95rem}
-}
-
-/* ===== colorful tags (colored via JS techStyle, base reset here) ===== */
-.tags span,.chips span{font-weight:600;transition:transform .15s,filter .2s}
-.tags span:hover,.chips span:hover{transform:translateY(-1px);filter:brightness(1.12)}
-
-/* ===== featured projects ===== */
-.project.featured .pinfo{position:relative}
-.feat-badge{display:flex;width:max-content;align-items:center;gap:7px;font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
-  color:#1a1206;background:linear-gradient(135deg,var(--warm,#ffb05c),var(--warm-2,#ff8a5c));
-  padding:5px 12px;border-radius:999px;margin-bottom:14px;box-shadow:0 10px 26px -12px rgba(255,138,92,.7)}
-.feat-badge svg{width:13px;height:13px}
-.project.featured .carousel{box-shadow:0 30px 70px -28px rgba(255,138,92,.45),0 30px 64px -30px rgba(0,0,0,.95)}
-.project.featured .carousel::after{content:"";position:absolute;inset:0;border-radius:20px;pointer-events:none;
-  box-shadow:inset 0 0 0 1px rgba(255,176,92,.35)}
-.pactions{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px}
-.btn-detail{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:11px 20px;font-weight:600;font-size:.92rem;
-  cursor:pointer;border:0;font-family:inherit;color:var(--text);background:rgba(245,236,227,.06);
-  box-shadow:inset 0 1px 0 rgba(245,236,227,.08);transition:transform .15s,background .2s,color .2s}
-.btn-detail:hover{transform:translateY(-2px);background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#0a0e1a}
-.btn-detail svg{width:16px;height:16px}
-
-/* ===== project detail modal ===== */
-.modal{position:fixed;inset:0;z-index:220;background:rgba(8,6,5,.78);backdrop-filter:blur(8px);
-  display:none;align-items:flex-start;justify-content:center;padding:5vh 20px;overflow-y:auto}
-.modal.open{display:flex}
-.modal-box{position:relative;max-width:880px;width:100%;background:linear-gradient(180deg,var(--surface),var(--bg-2));
-  border-radius:22px;box-shadow:0 40px 90px -30px rgba(0,0,0,.95);overflow:hidden;animation:modalIn .35s cubic-bezier(.2,.7,.2,1)}
-@keyframes modalIn{from{opacity:0;transform:translateY(26px) scale(.98)}to{opacity:1;transform:none}}
-.modal-hero{position:relative;aspect-ratio:16/8;background:#000;overflow:hidden}
-.modal-hero img{width:100%;height:100%;object-fit:cover}
-.modal-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(8,11,22,.85));pointer-events:none}
-.modal-thumbs{position:absolute;left:0;right:0;bottom:14px;z-index:2;display:flex;gap:8px;justify-content:center;flex-wrap:wrap;padding:0 14px}
-.modal-thumbs img{width:54px;height:38px;object-fit:cover;border-radius:8px;cursor:pointer;opacity:.55;transition:opacity .2s,transform .2s;box-shadow:0 0 0 1px rgba(255,255,255,.12)}
-.modal-thumbs img.active,.modal-thumbs img:hover{opacity:1;transform:translateY(-2px);box-shadow:0 0 0 2px var(--warm,#ffb05c)}
-.modal-body{padding:28px 32px 34px}
-.modal-body .role{color:var(--warm);font-weight:600;font-size:.8rem;letter-spacing:.04em;text-transform:uppercase}
-.modal-body h3{font-size:clamp(1.6rem,3vw,2.2rem);margin:8px 0 14px}
-.modal-body p.lead{color:var(--muted);font-size:1.02rem;margin:0 0 20px}
-.modal-grid{display:grid;grid-template-columns:1.3fr .7fr;gap:26px}
-.modal-grid h4{font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin:0 0 12px}
-.modal-feats{list-style:none;padding:0;margin:0;display:grid;gap:9px}
-.modal-feats li{position:relative;padding-left:20px;color:var(--text);font-size:.94rem}
-.modal-feats li::before{content:"";position:absolute;left:0;top:.55em;width:7px;height:7px;border-radius:50%;background:var(--warm)}
-.modal-side .tags{margin-bottom:22px}
-.modal-links{display:flex;flex-direction:column;gap:10px}
-.modal-close{position:absolute;top:14px;right:16px;z-index:3;width:40px;height:40px;border-radius:50%;border:0;cursor:pointer;
-  background:rgba(8,6,5,.6);backdrop-filter:blur(6px);color:#fff;font-size:1.5rem;line-height:1;display:grid;place-items:center;transition:background .2s}
-.modal-close:hover{background:var(--warm);color:#1a1206}
-@media(max-width:680px){.modal-grid{grid-template-columns:1fr;gap:18px}.modal-body{padding:22px 20px 28px}}
-
-/* ===== testimonials ===== */
-.t-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.t-card{background:linear-gradient(180deg,rgba(245,236,227,.05),rgba(245,236,227,.015));border-radius:var(--radius);
-  padding:26px 24px;box-shadow:inset 0 1px 0 rgba(255,176,92,.10),0 18px 42px -30px rgba(0,0,0,.95);
-  display:flex;flex-direction:column;gap:16px;position:relative;transition:transform .2s,box-shadow .2s}
-.t-card:hover{transform:translateY(-4px);box-shadow:inset 0 1px 0 rgba(255,176,92,.30),0 26px 54px -26px rgba(0,0,0,1)}
-.t-quote{font-size:1.7rem;line-height:1;color:var(--warm);font-family:"Bricolage Grotesque",serif;opacity:.65}
-.t-text{color:var(--text);font-size:.98rem;margin:0;flex:1}
-.t-who{display:flex;align-items:center;gap:12px}
-.t-av{width:44px;height:44px;border-radius:50%;object-fit:cover;flex:0 0 auto;box-shadow:0 0 0 1px rgba(245,236,227,.14)}
-.t-av.ph{display:grid;place-items:center;font-weight:700;color:#1a1206;background:linear-gradient(135deg,var(--warm),var(--warm-2));font-family:"Bricolage Grotesque",serif}
-.t-name{font-weight:600;color:var(--text);font-size:.95rem;line-height:1.2}
-.t-role{color:var(--muted);font-size:.82rem}
-.t-stars{color:var(--warm);font-size:.9rem;letter-spacing:2px}
-.t-card:nth-child(2){transition-delay:.07s}.t-card:nth-child(3){transition-delay:.14s}
-@media(max-width:920px){.t-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:560px){.t-grid{grid-template-columns:1fr}}
-
-</style>
 </head>
 <body>
-<div class="bg-grid" aria-hidden="true"></div>
-<div class="bg-orbs" aria-hidden="true"><span class="o1"></span><span class="o2"></span><span class="o3"></span><span class="o4"></span></div>
+
+<div id="splash">
+  <div class="splash-inner">
+    <div class="splash-brand">
+      <div class="splash-logo-wrap">
+        <svg class="splash-logo-base" viewBox="0 0 585.42 527.09" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M121.88,111.05c1.26-1.3,6.14,5.35,6.89,6.07,24.4,23.58,49.35,46.65,73.56,70.4,40.29,39.52,79.85,80.41,120.12,120.05,4.44,4.37,8.85,8.79,13.69,12.71.82,0,8.83-8,10.1-9.33,44.05-46.03,89.53-90.6,134.4-135.77,31.95-32.16,63.63-64.47,95.92-96.26.95-.94,6.58-7.36,7.06-7.55.61-.24,1.16-.17,1.79-.15l-1.92,455.86h-73.9c-.12,0-1.08-1.8-.99-2.11.34-39.05-.33-78.11.02-117.16.03-3.35.97-7.62,1-10.99.42-47.42-.36-94.88-.03-142.3-.67-.72-8.01,6.1-8.92,6.93-22.6,20.49-43.09,45.06-65.73,65.73-31.51,32.44-64.01,64.28-95.7,96.49-.75.77-2.13,1.68-3.12,2.18-.95,0-4.81-4.81-5.88-5.79-42.79-38.85-82.48-81.8-123.64-122.62-5.8-5.75-12.06-11.01-17.84-16.74-22.29-22.08-44.25-44.91-66.9-66.49v-103.17Z"/>
+          <path d="M0,.21C1.23-.95,4.1,3.09,4.97,3.86c19.39,17.12,39.02,34.86,57.72,52.68,4.76,4.53,9.08,9.55,14.09,13.97v384.6c51.26.17,102.55-.22,153.82-.02,4.29.02,8.64.01,12.91,0s14.99-.71,18.14.13c1.71.46,5.59,4.55,7.05,6.02,17.22,17.3,34.49,34.83,51.84,52.19,3.99,3.99,8.52,7.49,11.96,12.04.03.09-.82,1.61-.91,1.61H.96s.08-.54-.17-.79-.79-.13-.79-.17V.21Z"/>
+        </svg>
+        <svg class="splash-logo-fill" viewBox="0 0 585.42 527.09" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M121.88,111.05c1.26-1.3,6.14,5.35,6.89,6.07,24.4,23.58,49.35,46.65,73.56,70.4,40.29,39.52,79.85,80.41,120.12,120.05,4.44,4.37,8.85,8.79,13.69,12.71.82,0,8.83-8,10.1-9.33,44.05-46.03,89.53-90.6,134.4-135.77,31.95-32.16,63.63-64.47,95.92-96.26.95-.94,6.58-7.36,7.06-7.55.61-.24,1.16-.17,1.79-.15l-1.92,455.86h-73.9c-.12,0-1.08-1.8-.99-2.11.34-39.05-.33-78.11.02-117.16.03-3.35.97-7.62,1-10.99.42-47.42-.36-94.88-.03-142.3-.67-.72-8.01,6.1-8.92,6.93-22.6,20.49-43.09,45.06-65.73,65.73-31.51,32.44-64.01,64.28-95.7,96.49-.75.77-2.13,1.68-3.12,2.18-.95,0-4.81-4.81-5.88-5.79-42.79-38.85-82.48-81.8-123.64-122.62-5.8-5.75-12.06-11.01-17.84-16.74-22.29-22.08-44.25-44.91-66.9-66.49v-103.17Z"/>
+          <path d="M0,.21C1.23-.95,4.1,3.09,4.97,3.86c19.39,17.12,39.02,34.86,57.72,52.68,4.76,4.53,9.08,9.55,14.09,13.97v384.6c51.26.17,102.55-.22,153.82-.02,4.29.02,8.64.01,12.91,0s14.99-.71,18.14.13c1.71.46,5.59,4.55,7.05,6.02,17.22,17.3,34.49,34.83,51.84,52.19,3.99,3.99,8.52,7.49,11.96,12.04.03.09-.82,1.61-.91,1.61H.96s.08-.54-.17-.79-.79-.13-.79-.17V.21Z"/>
+        </svg>
+      </div>
+      <span class="splash-name" id="splashName"></span>
+    </div>
+  </div>
+  <div class="splash-bottom">
+    <div class="splash-phrases">
+      <p class="splash-phrase" id="splashPhrase1"></p>
+      <p class="splash-phrase" id="splashPhrase2"></p>
+    </div>
+  </div>
+  <div class="splash-bar-wrap">
+    <div class="splash-bar-fill"></div>
+  </div>
+</div>
+<a class="skip-link" href="#main-content" data-en="Skip to content" data-es="Saltar al contenido">Skip to content</a>
+<canvas class="gradient-mesh" aria-hidden="true"></canvas>
+<div id="scene-3d" aria-hidden="true"></div>
+
+
+<div class="page-wrap">
 
 <header class="nav">
+  <div class="nav-progress" id="navProgress"></div>
   <div class="wrap nav-inner">
-    <a class="brand" href="#top"><img class="mark" src="images/logo.png" alt="LM monogram, Leandro Marquez logo" /><span>Leandro&nbsp;Marquez</span></a>
-    <nav class="nav-links">
+    <a class="brand" href="#main-content"><img class="mark" src="images/logo.png" alt="LM monogram, Leandro Marquez logo" /><span>Leandro&nbsp;Marquez</span></a>
+    <button class="nav-toggle" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav-links" id="nav-links">
       <a href="#work" data-en="What I Do" data-es="Qué hago">What I Do</a>
       <a href="#projects" data-en="Projects" data-es="Proyectos">Projects</a>
       <a href="#testimonials" data-en="Testimonials" data-es="Testimonios">Testimonials</a>
       <a href="#skills" data-en="Skills" data-es="Habilidades">Skills</a>
+      <a href="#blog" data-en="Blog" data-es="Blog">Blog</a>
       <a href="#contact" data-en="Contact" data-es="Contacto">Contact</a>
     </nav>
     <div class="nav-right">
       <span class="pill"><span class="dot"></span><span data-en="Open to work" data-es="Disponible">Open to work</span></span>
+      <button class="theme-toggle" aria-label="Toggle theme">
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18" aria-hidden="true" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
       <div class="lang" role="group" aria-label="Language">
         <button data-lang="en" class="active">EN</button>
         <button data-lang="es">ES</button>
@@ -438,43 +102,86 @@ html,body{overflow-x:clip}
   </div>
 </header>
 
-<main id="top">
-<!-- HERO -->
+<main id="main-content">
+<!-- HERO — 3D Aurora Full-Viewport -->
 <section class="hero">
-  <div class="wrap hero-grid">
-    <div>
-      <span class="eyebrow" data-en="AI · Simulation · Interactive Software" data-es="IA · Simulación · Software Interactivo">AI · Simulation · Interactive Software</span>
-      <h1 class="serif">Leandro N. <em>Marquez</em></h1>
-      <p class="roles" data-en="AI Software Developer · Technical Product Builder · Real-Time Simulation Specialist" data-es="Desarrollador de Software con IA · Constructor de Productos Técnicos · Especialista en Simulación en Tiempo Real">AI Software Developer · Technical Product Builder · Real-Time Simulation Specialist</p>
+  <div class="wrap">
+    <div class="hero-inner">
+      <span class="sec-comment">// domain</span>
+      <span class="eyebrow" data-en="AI • Simulation • Interactive Software" data-es="IA • Simulación • Software Interactivo">AI • Simulation • Interactive Software</span>
+      <div class="terminal-line" aria-hidden="true">
+        <span class="prompt">❯</span>
+        <span class="cmd" id="heroCmd">building AI products & real-time simulations</span>
+      </div>
+      <h1 class="hero-enormous">Leandro N. <em>Marquez</em></h1>
+      <p class="roles" data-en="AI Software Developer • Technical Product Builder • Real-Time Simulation Specialist" data-es="Desarrollador de Software con IA • Constructor de Productos Técnicos • Especialista en Simulación en Tiempo Real">AI Software Developer • Technical Product Builder • Real-Time Simulation Specialist</p>
       <p class="lead" data-en="I build AI-powered software, interactive applications, computer vision systems, and real-time simulations." data-es="Construyo software impulsado por IA, aplicaciones interactivas, sistemas de visión por computadora y simulaciones en tiempo real.">I build AI-powered software, interactive applications, computer vision systems, and real-time simulations.</p>
       <div class="cta">
         <a class="btn btn-primary" href="#contact" data-cta-scroll data-en="Get in touch" data-es="Contactame">Get in touch</a>
         <a class="btn btn-ghost" href="#projects" data-en="View projects" data-es="Ver proyectos">View projects</a>
-        <a class="btn btn-icon" href="https://linkedin.com/in/leandro-marquez-it" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5A2.5 2.5 0 1 0 5 8.5a2.5 2.5 0 0 0-.02-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.06 3.77-2.06C20.4 8.64 22 10.6 22 14.1V21h-4v-6.1c0-1.45-.03-3.32-2.02-3.32-2.02 0-2.33 1.58-2.33 3.21V21H9z"/></svg></a>
-        <a class="btn btn-icon" href="https://upwork.com/freelancers/~014024ca7ade29baed" target="_blank" rel="noopener" aria-label="Upwork"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M18.6 7.3c-1.96 0-3.46 1.27-4.07 3.3-.93-1.4-1.63-3.1-2.04-4.53H9.4v5.48c0 1.36-.62 2.36-1.83 2.36-1.2 0-1.82-1-1.82-2.36L5.76 6.07H3.06v5.48c0 1.3.42 2.49 1.18 3.32.78.85 1.85 1.31 3.03 1.31 2.36 0 4.01-1.81 4.01-4.4v-.92c.38.78.85 1.58 1.42 2.28l-1.2 5.67h2.77l.87-4.11c.76.49 1.63.76 2.6.76 2.5 0 4.53-2.05 4.53-4.96 0-2.92-2.03-4.91-4.4-4.91zm-.13 7.3c-.73 0-1.42-.31-2.05-.82l.2-.78v-.02c.14-.82.6-2.2 2-2.2 1.05 0 1.9.9 1.9 2.01 0 1.13-.86 2.02-2.05 2.02z"/></svg></a>
+        <a class="btn btn-linkedin" href="https://linkedin.com/in/leandro-marquez-it" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5A2.5 2.5 0 1 0 5 8.5a2.5 2.5 0 0 0-.02-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.06 3.77-2.06C20.4 8.64 22 10.6 22 14.1V21h-4v-6.1c0-1.45-.03-3.32-2.02-3.32-2.02 0-2.33 1.58-2.33 3.21V21H9z"/></svg> LinkedIn</a>
+        <a class="btn btn-upwork" href="https://upwork.com/freelancers/~014024ca7ade29baed" target="_blank" rel="noopener" aria-label="Upwork"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M18.6 6.15c-1.9 0-3.5 1.3-4.1 3.3-.9-1.4-1.6-3.1-2-4.5H9.4v5.6c0 1.4-.6 2.4-1.8 2.4-1.2 0-1.8-1-1.8-2.4V6.15H3v5.6c0 1.3.4 2.5 1.2 3.3.8.9 1.9 1.3 3 1.3 2.4 0 4-1.8 4-4.4v-.9c.4.8.8 1.6 1.4 2.3l-1.2 5.7h2.8l.9-4.1c.8.5 1.6.8 2.6.8 2.5 0 4.5-2 4.5-5 0-2.9-2-5-4.4-5zm-.1 7.4c-.7 0-1.4-.3-2.1-.8l.2-.8v-.02c.1-.8.6-2.2 2-2.2 1 0 1.9.9 1.9 2 0 1.1-.8 2-2 2z"/></svg> Upwork</a>
       </div>
       <div class="meta">
         <span class="loc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" width="15" height="15" aria-hidden="true"><path d="M12 21s7-6.3 7-11a7 7 0 1 0-14 0c0 4.7 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span data-en="Salta, Argentina" data-es="Salta, Argentina">Salta, Argentina</span></span>
-        <span><b data-en="7+ years building" data-es="7+ años creando">7+ years building</b></span>
         <span><b data-en="Bilingual EN / ES" data-es="Bilingüe ES / EN">Bilingual EN / ES</b></span>
       </div>
     </div>
   </div>
+  <div class="scroll-indicator" aria-hidden="true">
+    <span data-en="Scroll" data-es="Desliza">Scroll</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="14" height="14"><path d="M6 9l6 6 6-6"/></svg>
+  </div>
 </section>
+
+<!-- MANIFESTO -->
+<section id="manifesto" class="manifesto-sec">
+  <div class="wrap">
+    <p class="manifesto-text reveal" data-en="Seven years shipping software across AI automation, environmental simulation, game development, and technical visualization — for clients in 4 countries across 6 industries. <mark>24+ projects delivered.</mark>" data-es="Siete años lanzando software a través de automatización con IA, simulación ambiental, desarrollo de juegos y visualización técnica — para clientes en 4 países en 6 industrias. <mark>Más de 24 proyectos entregados.</mark>">Seven years shipping software across AI automation, environmental simulation, game development, and technical visualization — for clients in 4 countries across 6 industries. <mark>24+ projects delivered.</mark></p>
+  </div>
+</section>
+
+<!-- HORIZONTAL TEXT SCROLL -->
+<div class="scroll-text" aria-hidden="true">
+  <div class="scroll-text-track">
+    <span>AI SOFTWARE DEVELOPMENT</span><span class="st-star">✦</span>
+    <span>REAL-TIME SIMULATION</span><span class="st-star">✦</span>
+    <span>COMPUTER VISION</span><span class="st-star">✦</span>
+    <span>TECHNICAL PRODUCT DEVELOPMENT</span><span class="st-star">✦</span>
+    <span>AUGMENTED REALITY</span><span class="st-star">✦</span>
+    <span>GAME DEVELOPMENT</span><span class="st-star">✦</span>
+    <span>BLENDER ADDONS</span><span class="st-star">✦</span>
+    <span>BROADCAST AUTOMATION</span><span class="st-star">✦</span>
+    <span>GENERATIVE AI PIPELINES</span><span class="st-star">✦</span>
+    <span>AR PORTALS</span><span class="st-star">✦</span>
+    <!-- repeat for seamless loop -->
+    <span>AI SOFTWARE DEVELOPMENT</span><span class="st-star">✦</span>
+    <span>REAL-TIME SIMULATION</span><span class="st-star">✦</span>
+    <span>COMPUTER VISION</span><span class="st-star">✦</span>
+    <span>TECHNICAL PRODUCT DEVELOPMENT</span><span class="st-star">✦</span>
+    <span>AUGMENTED REALITY</span><span class="st-star">✦</span>
+    <span>GAME DEVELOPMENT</span><span class="st-star">✦</span>
+    <span>BLENDER ADDONS</span><span class="st-star">✦</span>
+    <span>BROADCAST AUTOMATION</span><span class="st-star">✦</span>
+    <span>GENERATIVE AI PIPELINES</span><span class="st-star">✦</span>
+    <span>AR PORTALS</span>
+  </div>
+</div>
 
 <!-- WHAT I DO -->
 <section id="work">
   <div class="wrap">
     <div class="section-head reveal">
+      <span class="sec-comment">// services</span>
       <span class="eyebrow" data-en="What I Do" data-es="Qué hago">What I Do</span>
-      <h2 class="serif" data-en="Software, vision and simulation, shipped." data-es="Software, visión y simulación, listos para producción.">Software, vision and simulation, shipped.</h2>
+      <h2 class="serif txt-reveal" data-en="Software, vision and simulation, shipped." data-es="Software, visión y simulación, listos para producción.">Software, vision and simulation, shipped.</h2>
       <p data-en="Seven years across software development, AI automation, environmental simulation, game development and technical visualization, delivering production-ready solutions for startups, businesses and international clients." data-es="Siete años entre desarrollo de software, automatización con IA, simulación ambiental, desarrollo de videojuegos y visualización técnica, entregando soluciones listas para producción a startups, empresas y clientes internacionales.">Seven years across software development, AI automation, environmental simulation, game development and technical visualization, delivering production-ready solutions for startups, businesses and international clients.</p>
     </div>
     <div class="cards">
-      <div class="card reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="22" height="22" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="2"/><rect x="9.5" y="9.5" width="5" height="5" rx="1"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/></svg></div><h3 data-en="AI Software Development" data-es="Desarrollo de Software con IA">AI Software Development</h3><p data-en="Commercial AI apps that automate workflows, customer interactions, content processing and business operations." data-es="Apps de IA comerciales que automatizan flujos de trabajo, interacciones con clientes, procesamiento de contenido y operaciones de negocio.">Commercial AI apps that automate workflows, customer interactions, content processing and business operations.</p></div>
-      <div class="card reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="22" height="22" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></div><h3 data-en="Computer Vision & AI" data-es="Visión por Computadora e IA">Computer Vision & AI</h3><p data-en="Integrating state-of-the-art AI models into production-ready software and user-facing applications." data-es="Integro modelos de IA de última generación en software listo para producción y aplicaciones de usuario.">Integrating state-of-the-art AI models into production-ready software and user-facing applications.</p></div>
-      <div class="card reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" width="22" height="22" aria-hidden="true"><path d="M3 12h4l2.5 7 5-14 2.5 7H21"/></svg></div><h3 data-en="Real-Time Simulation" data-es="Simulación en Tiempo Real">Real-Time Simulation</h3><p data-en="Interactive simulations for environmental analysis, visualization, training systems and technical presentations." data-es="Simulaciones interactivas para análisis ambiental, visualización, sistemas de entrenamiento y presentaciones técnicas.">Interactive simulations for environmental analysis, visualization, training systems and technical presentations.</p></div>
-      <div class="card reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="22" height="22" aria-hidden="true"><path d="M4 5l7 15 2.4-7.6L21 10z"/></svg></div><h3 data-en="Interactive Applications" data-es="Aplicaciones Interactivas">Interactive Applications</h3><p data-en="Desktop apps, Unity software, visualization tools, product configurators and immersive experiences." data-es="Apps de escritorio, software en Unity, herramientas de visualización, configuradores de producto y experiencias inmersivas.">Desktop apps, Unity software, visualization tools, product configurators and immersive experiences.</p></div>
+      <div class="card reveal"><h3 data-en="AI Software Development" data-es="Desarrollo de Software con IA">AI Software Development</h3><p data-en="Commercial AI apps that automate workflows, customer interactions, content processing and business operations." data-es="Apps de IA comerciales que automatizan flujos de trabajo, interacciones con clientes, procesamiento de contenido y operaciones de negocio.">Commercial AI apps that automate workflows, customer interactions, content processing and business operations.</p></div>
+      <div class="card reveal"><h3 data-en="Computer Vision & AI" data-es="Visión por Computadora e IA">Computer Vision & AI</h3><p data-en="Integrating state-of-the-art AI models into production-ready software and user-facing applications." data-es="Integro modelos de IA de última generación en software listo para producción y aplicaciones de usuario.">Integrating state-of-the-art AI models into production-ready software and user-facing applications.</p></div>
+      <div class="card reveal"><h3 data-en="Real-Time Simulation" data-es="Simulación en Tiempo Real">Real-Time Simulation</h3><p data-en="Interactive simulations for environmental analysis, visualization, training systems and technical presentations." data-es="Simulaciones interactivas para análisis ambiental, visualización, sistemas de entrenamiento y presentaciones técnicas.">Interactive simulations for environmental analysis, visualization, training systems and technical presentations.</p></div>
+      <div class="card reveal"><h3 data-en="Interactive Applications" data-es="Aplicaciones Interactivas">Interactive Applications</h3><p data-en="Desktop apps, Unity software, visualization tools, product configurators and immersive experiences." data-es="Apps de escritorio, software en Unity, herramientas de visualización, configuradores de producto y experiencias inmersivas.">Desktop apps, Unity software, visualization tools, product configurators and immersive experiences.</p></div>
     </div>
   </div>
 </section>
@@ -483,9 +190,10 @@ html,body{overflow-x:clip}
 <section id="projects">
   <div class="wrap">
     <div class="section-head reveal">
+      <span class="sec-comment">// projects</span>
       <span class="eyebrow" data-en="Featured Projects" data-es="Proyectos Destacados">Featured Projects</span>
-      <h2 class="serif" data-en="Selected work" data-es="Trabajos seleccionados">Selected work</h2>
-      <p data-en="A few projects that show the range, from commercial AI products to technical evidence and retro-horror games." data-es="Algunos proyectos que muestran el rango, desde productos comerciales de IA hasta evidencia técnica y juegos de retro-horror.">A few projects that show the range, from commercial AI products to technical evidence and retro-horror games.</p>
+      <h2 class="serif txt-reveal" data-en="Selected work" data-es="Trabajos seleccionados">Selected work</h2>
+      <p data-en="A few projects that show the range, from commercial AI products and Blender addons to augmented reality, technical evidence and retro-horror games." data-es="Algunos proyectos que muestran el rango, desde productos comerciales de IA y addons de Blender hasta realidad aumentada, evidencia técnica y juegos de retro-horror.">A few projects that show the range, from commercial AI products and Blender addons to augmented reality, technical evidence and retro-horror games.</p>
     </div>
 
     <!-- Between Songs & Demons -->
@@ -505,14 +213,14 @@ html,body{overflow-x:clip}
         </ul>
         <div class="tags"><span>Unity</span><span>C#</span><span>Blender</span><span>PSX style</span></div>
         <div class="pactions">
-          <button class="btn-detail" data-detail="between"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><span data-en="View details" data-es="Ver más">View details</span></button>
+          <button class="btn-detail" data-detail="between"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg><span data-en="View details" data-es="Ver más">View details</span></button>
         </div>
       </div>
       <div class="carousel" data-carousel data-extra="between">
         <div class="track">
-          <div class="slide"><img loading="lazy" src="images/between-songs-demons-dim-haunted-corrido.webp" alt="Between Songs & Demons, dim haunted corridor"><div class="cap" data-en="Abandoned house corridor, PSX lighting" data-es="Pasillo de casa abandonada, iluminación PSX">Abandoned house corridor, PSX lighting</div></div>
-          <div class="slide"><img loading="lazy" src="images/between-songs-demons-flashlight-characte.webp" alt="Between Songs & Demons, flashlight character in basement"><div class="cap" data-en="Flashlight exploration in the basement" data-es="Exploración con linterna en el sótano">Flashlight exploration in the basement</div></div>
-          <div class="slide"><img loading="lazy" src="images/between-songs-demons-foggy-forest-path.webp" alt="Between Songs & Demons, foggy forest path"><div class="cap" data-en="Foggy forest path at dusk" data-es="Sendero del bosque con niebla al anochecer">Foggy forest path at dusk</div></div>
+          <div class="slide"><img loading="lazy" src="images/between-songs-demons-dim-haunted-corrido-comp.webp" alt="Between Songs & Demons, dim haunted corridor"><div class="cap" data-en="Abandoned house corridor, PSX lighting" data-es="Pasillo de casa abandonada, iluminación PSX">Abandoned house corridor, PSX lighting</div></div>
+          <div class="slide"><img loading="lazy" src="images/between-songs-demons-flashlight-characte-comp.webp" alt="Between Songs & Demons, flashlight character in basement"><div class="cap" data-en="Flashlight exploration in the basement" data-es="Exploración con linterna en el sótano">Flashlight exploration in the basement</div></div>
+          <div class="slide"><img loading="lazy" src="images/between-songs-demons-foggy-forest-path-comp.webp" alt="Between Songs & Demons, foggy forest path"><div class="cap" data-en="Foggy forest path at dusk" data-es="Sendero del bosque con niebla al anochecer">Foggy forest path at dusk</div></div>
         </div>
       </div>
     </div>
@@ -532,15 +240,15 @@ html,body{overflow-x:clip}
           <li data-en="AI customer communication" data-es="Comunicación con IA">AI customer communication</li>
           <li data-en="WhatsApp-native" data-es="Nativo en WhatsApp">WhatsApp-native</li>
         </ul>
-        <div class="tags"><span>C#</span><span>Firebase</span><span>REST APIs</span><span>AI Integrations</span></div>
+        <div class="tags"><span>C#</span><span>Supabase</span><span>Evolution API</span><span>REST APIs</span><span>AI Integrations</span></div>
         <div class="pactions">
-          <button class="btn-detail" data-detail="alloy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><span data-en="View details" data-es="Ver más">View details</span></button>
+          <button class="btn-detail" data-detail="alloy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg><span data-en="View details" data-es="Ver más">View details</span></button>
         </div>
       </div>
       <div class="carousel" data-carousel data-extra="alloy">
         <div class="track">
-          <div class="slide"><img loading="lazy" src="images/alloy-landing-and-whatsapp-chat-mockup.webp" alt="Alloy, landing and WhatsApp chat mockup"><div class="cap" data-en="Product landing & live conversation" data-es="Landing del producto y conversación en vivo">Product landing & live conversation</div></div>
-          <div class="slide"><img loading="lazy" src="images/alloy-whatsapp-business-chat-automation.webp" alt="Alloy, WhatsApp business chat automation"><div class="cap" data-en="AI answering customers on WhatsApp" data-es="IA respondiendo clientes en WhatsApp">AI answering customers on WhatsApp</div></div>
+          <div class="slide"><img loading="lazy" src="images/alloy-landing-and-whatsapp-chat-mockup-comp.webp" alt="Alloy, landing and WhatsApp chat mockup"><div class="cap" data-en="Product landing & live conversation" data-es="Landing del producto y conversación en vivo">Product landing & live conversation</div></div>
+          <div class="slide"><img loading="lazy" src="images/alloy-whatsapp-business-chat-automation-comp.webp" alt="Alloy, WhatsApp business chat automation"><div class="cap" data-en="AI answering customers on WhatsApp" data-es="IA respondiendo clientes en WhatsApp">AI answering customers on WhatsApp</div></div>
           <div class="slide"><img loading="lazy" src="images/alloy-analytics-dashboard.webp" alt="Alloy, analytics dashboard"><div class="cap" data-en="Conversations & conversion dashboard" data-es="Panel de conversaciones y conversiones">Conversations & conversion dashboard</div></div>
         </div>
       </div>
@@ -555,14 +263,14 @@ html,body{overflow-x:clip}
         <div class="outcome" data-en="Submitted as technical evidence to the Plymouth Zoning Board of Appeals (ZBA), helping communicate environmental impact through accurate interactive visualization." data-es="Presentada como evidencia técnica ante el Zoning Board of Appeals (ZBA) de Plymouth, ayudando a comunicar el impacto ambiental mediante visualización interactiva precisa.">Submitted as technical evidence to the Plymouth Zoning Board of Appeals (ZBA), helping communicate environmental impact through accurate interactive visualization.</div>
         <div class="tags"><span>Unity HDRP</span><span>Blender</span><span>C#</span><span data-en="Real-time lighting" data-es="Iluminación en tiempo real">Real-time lighting</span></div>
         <div class="pactions">
-          <button class="btn-detail" data-detail="light"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><span data-en="View details" data-es="Ver más">View details</span></button>
+          <button class="btn-detail" data-detail="light"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg><span data-en="View details" data-es="Ver más">View details</span></button>
         </div>
       </div>
       <div class="carousel" data-carousel data-extra="light">
         <div class="track">
-          <div class="slide"><img loading="lazy" src="images/headlight-intrusion-onto-a-house-at-nigh.webp" alt="Headlight intrusion onto a house at night"><div class="cap" data-en="Headlight intrusion onto an existing home" data-es="Intrusión de luces sobre una vivienda existente">Headlight intrusion onto an existing home</div></div>
-          <div class="slide"><img loading="lazy" src="images/aerial-site-plan-of-the-proposed-road-at.webp" alt="Aerial site plan of the proposed road at night"><div class="cap" data-en="Aerial site plan with vehicle paths" data-es="Plano aéreo con recorridos de vehículos">Aerial site plan with vehicle paths</div></div>
-          <div class="slide"><img loading="lazy" src="images/interior-view-of-light-intrusion-through.webp" alt="Interior view of light intrusion through windows"><div class="cap" data-en="Interior view, real-time HDRP lighting" data-es="Vista interior, iluminación HDRP en tiempo real">Interior view, real-time HDRP lighting</div></div>
+          <div class="slide"><img loading="lazy" src="images/headlight-intrusion-onto-a-house-at-nigh-comp.webp" alt="Headlight intrusion onto a house at night"><div class="cap" data-en="Headlight intrusion onto an existing home" data-es="Intrusión de luces sobre una vivienda existente">Headlight intrusion onto an existing home</div></div>
+          <div class="slide"><img loading="lazy" src="images/aerial-site-plan-of-the-proposed-road-at-comp.webp" alt="Aerial site plan of the proposed road at night"><div class="cap" data-en="Aerial site plan with vehicle paths" data-es="Plano aéreo con recorridos de vehículos">Aerial site plan with vehicle paths</div></div>
+          <div class="slide"><img loading="lazy" src="images/interior-view-of-light-intrusion-through-comp.webp" alt="Interior view of light intrusion through windows"><div class="cap" data-en="Interior view, real-time HDRP lighting" data-es="Vista interior, iluminación HDRP en tiempo real">Interior view, real-time HDRP lighting</div></div>
         </div>
       </div>
     </div>
@@ -583,7 +291,7 @@ html,body{overflow-x:clip}
         </ul>
         <div class="tags"><span>RMV</span><span>BiRefNet Lite</span><span>RMBG 2.0</span><span>MODNet</span><span>MediaPipe</span></div>
         <div class="pactions">
-          <button class="btn-detail" data-detail="videobooth"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><span data-en="View details" data-es="Ver más">View details</span></button>
+          <button class="btn-detail" data-detail="videobooth"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg><span data-en="View details" data-es="Ver más">View details</span></button>
         </div>
       </div>
       <div class="carousel" data-carousel data-extra="videobooth">
@@ -595,6 +303,112 @@ html,body{overflow-x:clip}
       </div>
     </div>
 
+    <!-- PSX Cycles -->
+    <div class="project reveal" data-project="psxcycles">
+      <div class="pinfo">
+        <span class="role" data-en="Addon Developer & Technical Artist" data-es="Desarrollador de Addons y Artista Técnico">Addon Developer & Technical Artist</span>
+        <h3 class="serif">PSX Cycles</h3>
+        <p data-en="PSX Cycles is a native Blender render engine that faithfully recreates the visual characteristics of classic 32-bit console graphics." data-es="PSX Cycles es un motor de render nativo para Blender que recrea fielmente las características visuales de los gráficos clásicos de consolas de 32 bits.">PSX Cycles is a native Blender render engine that faithfully recreates the visual characteristics of classic 32-bit console graphics.</p>
+        <ul class="feat-list">
+          <li data-en="Native Blender engine" data-es="Motor nativo en Blender">Native Blender engine</li>
+          <li data-en="32-bit retro visuals" data-es="Visuales retro de 32 bits">32-bit retro visuals</li>
+          <li data-en="Affine texture mapping" data-es="Mapeo afín de texturas">Affine texture mapping</li>
+          <li data-en="Custom vertex jitter" data-es="Simulación de vertex jitter">Custom vertex jitter</li>
+          <li data-en="Color dithering pipelines" data-es="Paletas de color y dithering">Color dithering pipelines</li>
+          <li data-en="Real-time viewport preview" data-es="Previsualización en tiempo real">Real-time viewport preview</li>
+        </ul>
+        <div class="tags"><span>Blender SDK</span><span>Python</span><span>Render Engine</span><span>Retro Graphics</span></div>
+        <div class="pactions">
+          <button class="btn-detail" data-detail="psxcycles"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg><span data-en="View details" data-es="Ver más">View details</span></button>
+        </div>
+      </div>
+      <div class="carousel vertical" data-carousel data-extra="psxcycles">
+        <div class="track">
+          <div class="slide"><video src="images/psx-cycles-demo.mp4" autoplay loop muted playsinline style="width:100%;height:100%;object-fit:cover;"></video><div class="cap" data-en="PSX Cycles retro render preview" data-es="Previsualización del render retro PSX Cycles">PSX Cycles retro render preview</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Rigidanim Merger -->
+    <div class="project flip reveal" data-project="rigidanim">
+      <div class="pinfo">
+        <span class="role" data-en="Addon Developer & Pipeline Engineer" data-es="Desarrollador de Addons e Ingeniero de Pipeline">Addon Developer & Pipeline Engineer</span>
+        <h3 class="serif">Rigidanim Merger</h3>
+        <p data-en="Blender has no built-in way to merge multiple animated objects into a single rig (Armature). This is the single biggest friction point for game devs exporting from Blender. Every artist eventually hits this wall. This addon fixes that." data-es="Blender no tiene una forma nativa de fusionar múltiples objetos animados en un solo esqueleto (Armature). Este es el mayor punto de fricción para desarrolladores que exportan desde Blender. Cada artista choca con esta pared eventualmente. Este addon lo soluciona.">Blender has no built-in way to merge multiple animated objects into a single rig (Armature). This is the single biggest friction point for game devs exporting from Blender. Every artist eventually hits this wall. This addon fixes that.</p>
+        <ul class="feat-list">
+          <li data-en="Rig merging automation" data-es="Fusión automatizada de rigs">Rig merging automation</li>
+          <li data-en="Maintains hierarchies" data-es="Mantiene jerarquías">Maintains hierarchies</li>
+          <li data-en="Bakes vertex groups" data-es="Hornea grupos de vértices">Bakes vertex groups</li>
+          <li data-en="Game engine optimized" data-es="Optimizado para motores de juego">Game engine optimized</li>
+          <li data-en="Saves hours of work" data-es="Ahorra horas de trabajo">Saves hours of work</li>
+          <li data-en="One-click execution" data-es="Ejecución en un clic">One-click execution</li>
+        </ul>
+        <div class="tags"><span>Blender API</span><span>Python</span><span>Game Dev Tooling</span><span>Rigging</span></div>
+        <div class="pactions">
+          <button class="btn-detail" data-detail="rigidanim"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg><span data-en="View details" data-es="Ver más">View details</span></button>
+        </div>
+      </div>
+      <div class="carousel" data-carousel data-extra="rigidanim">
+        <div class="track">
+          <div class="slide"><img loading="lazy" src="images/rigidanim-merger-summary.webp" alt="Rigidanim Merger workflow diagram"><div class="cap" data-en="Addon workflow: merging separated rigs" data-es="Flujo del addon: fusionando rigs separados">Addon workflow: merging separated rigs</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GemJoy AR Portal -->
+    <div class="project reveal" data-project="gemjoy">
+      <div class="pinfo">
+        <span class="role" data-en="Unity & AR Developer" data-es="Desarrollador Unity y RA">Unity & AR Developer</span>
+        <h3 class="serif">GemJoy AR Portal</h3>
+        <p data-en="Created an augmented reality gem-capture system using Vuforia Image Targets for custom gems, bracelets, and watches, playing magical, interactive animations upon scanning." data-es="Creé un sistema de captura de gemas en realidad aumentada usando Vuforia Image Targets para gemas personalizadas, pulseras y relojes, reproduciendo una animación mágica al escanearlos.">Created an augmented reality gem-capture system using Vuforia Image Targets for custom gems, bracelets, and watches, playing magical, interactive animations upon scanning.</p>
+        <ul class="feat-list">
+          <li data-en="Vuforia Image Targets" data-es="Vuforia Image Targets">Vuforia Image Targets</li>
+          <li data-en="Interactive magic animations" data-es="Animaciones mágicas interactivas">Interactive magic animations</li>
+          <li data-en="Luxury particle shaders" data-es="Shaders de partículas de lujo">Luxury particle shaders</li>
+          <li data-en="Mobile web AR optimization" data-es="Optimización RA web móvil">Mobile web AR optimization</li>
+          <li data-en="Real-time physical tracking" data-es="Seguimiento físico en tiempo real">Real-time physical tracking</li>
+          <li data-en="Seamless UX overlays" data-es="Interfaces RA fluidas">Seamless UX overlays</li>
+        </ul>
+        <div class="tags"><span>Unity</span><span>C#</span><span>Vuforia AR</span><span>Mobile AR</span><span>Shader Graph</span></div>
+        <div class="pactions">
+          <button class="btn-detail" data-detail="gemjoy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg><span data-en="View details" data-es="Ver más">View details</span></button>
+        </div>
+      </div>
+      <div class="carousel vertical" data-carousel data-extra="gemjoy">
+        <div class="track">
+          <div class="slide"><img loading="lazy" src="images/gemjoy-demo-1.webp" alt="GemJoy AR scan view 1"><div class="cap" data-en="AR portal overlay scanning gems" data-es="Interfaz de escaneo AR sobre gemas">AR portal overlay scanning gems</div></div>
+          <div class="slide"><img loading="lazy" src="images/gemjoy-demo-2.webp" alt="GemJoy AR scan view 2"><div class="cap" data-en="Magical particle reflections" data-es="Reflejos de partículas mágicas">Magical particle reflections</div></div>
+          <div class="slide"><img loading="lazy" src="images/gemjoy-demo-3.webp" alt="GemJoy AR scan view 3"><div class="cap" data-en="Interactive bracelets and rings" data-es="Brazaletes y anillos interactivos">Interactive bracelets and rings</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Canal 4 SCA -->
+    <div class="project flip reveal" data-project="canal4">
+      <div class="pinfo">
+        <span class="role" data-en="Software Developer &amp; Broadcast Systems Tech" data-es="Desarrollador de Software y Técnico de Sistemas de Transmisión">Software Developer &amp; Broadcast Systems Tech</span>
+        <h3 class="serif">Canal 4 SCA</h3>
+        <p data-en="Designed and built custom screen automation software that processes RSS XML feeds for automated, real-time news generation, configured broadcast networks and remote live technical feeds, and operated central control studio production workflows." data-es="Diseñé y programé un software a medida de automatización de pantalla que procesaba RSS feeds en XML para generar noticias en tiempo real, configuré redes de transmisión y radioenlaces, y operé control central de estudio.">Designed and built custom screen automation software that processes RSS XML feeds for automated, real-time news generation, configured broadcast networks and remote live technical feeds, and operated central control studio production workflows.</p>
+        <ul class="feat-list">
+          <li data-en="100% human-free automated screen news pipeline" data-es="Pipeline desatendido de noticias en pantalla">100% human-free automated screen news pipeline</li>
+          <li data-en="Automated real-time text, images, and weather graphics" data-es="Generación de texto, imágenes y clima en tiempo real">Automated real-time text, images, and weather graphics</li>
+          <li data-en="Configured technical radio links and remote networks" data-es="Configuración de radioenlaces y redes de transmisión">Configured technical radio links and remote networks</li>
+          <li data-en="Central control room operations (vMix/OBS)" data-es="Operación técnica de control central (vMix/OBS)">Central control room operations (vMix/OBS)</li>
+          <li data-en="Interactive Unreal Engine virtual sets" data-es="Propuestas de sets virtuales en Unreal Engine">Interactive Unreal Engine virtual sets</li>
+          <li data-en="Optimized live broadcast infrastructure stability" data-es="Estabilidad optimizada de infraestructura en vivo">Optimized live broadcast infrastructure stability</li>
+        </ul>
+        <div class="tags"><span>vMix / OBS</span><span>XML / RSS</span><span>Python</span><span>Unreal Engine</span><span>Broadcast Networks</span></div>
+        <div class="pactions">
+          <button class="btn-detail" data-detail="canal4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg><span data-en="View details" data-es="Ver más">View details</span></button>
+        </div>
+      </div>
+      <div class="carousel" data-carousel data-extra="canal4">
+        <div class="track">
+          <div class="slide"><img loading="lazy" src="images/canal4-automation.webp" alt="Canal 4 SCA live screen news automation system"><div class="cap" data-en="Broadcast screen news automation system" data-es="Sistema de automatización de noticias en pantalla de transmisión">Broadcast screen news automation system</div></div>
+        </div>
+      </div>
+    </div>
+
     <!-- SAVIA highlight -->
     <div class="highlight reveal">
       <div class="rank">
@@ -602,7 +416,7 @@ html,body{overflow-x:clip}
         <div class="l" data-en="Worldwide" data-es="Mundial">Worldwide</div>
       </div>
       <div>
-        <span class="role" style="color:var(--accent);font-weight:600;font-size:.8rem;text-transform:uppercase" data-en="SAVIA · Game Jam Plus 24/25 · Developer & Technical Artist" data-es="SAVIA · Game Jam Plus 24/25 · Desarrollador y Artista Técnico">SAVIA · Game Jam Plus 24/25 · Developer & Technical Artist</span>
+        <span class="role" style="color:var(--accent);font-weight:600;font-size:.8rem;text-transform:uppercase" data-en="SAVIA — Game Jam Plus 24/25 — Developer & Technical Artist" data-es="SAVIA — Game Jam Plus 24/25 — Desarrollador y Artista Técnico">SAVIA — Game Jam Plus 24/25 — Developer & Technical Artist</span>
         <h3 class="serif" style="margin-top:6px" data-en="Psychological thriller, built in 48 hours" data-es="Thriller psicológico, hecho en 48 horas">Psychological thriller, built in 48 hours</h3>
         <p data-en="A first-person psychological thriller set in the South American Gran Chaco, ranked #60 worldwide and the only Argentinian semifinalist. Full C# framework with task-oriented AI, survival systems and driving mechanics." data-es="Un thriller psicológico en primera persona ambientado en el Gran Chaco sudamericano, puesto #60 mundial y único semifinalista argentino. Framework completo en C# con IA orientada a tareas, sistemas de supervivencia y mecánicas de manejo.">A first-person psychological thriller set in the South American Gran Chaco, ranked #60 worldwide and the only Argentinian semifinalist. Full C# framework with task-oriented AI, survival systems and driving mechanics.</p>
       </div>
@@ -610,15 +424,16 @@ html,body{overflow-x:clip}
   </div>
 </section>
 
-<!-- TESTIMONIALS (content loaded from testimonials.json) -->
-<section id="testimonials">
+<!-- TESTIMONIALS (Consolidated Wall of Love) -->
+<section id="testimonials" class="testimonials-sec">
   <div class="wrap">
     <div class="section-head reveal">
+      <span class="sec-comment">// clients</span>
       <span class="eyebrow" data-en="Testimonials" data-es="Testimonios">Testimonials</span>
-      <h2 class="serif" data-en="What people say" data-es="Lo que dicen">What people say</h2>
-      <p data-en="Feedback from clients and collaborators I've worked with. Edit these in testimonials.json." data-es="Comentarios de clientes y colaboradores con los que trabajé. Editalos en testimonials.json.">Feedback from clients and collaborators I've worked with. Edit these in testimonials.json.</p>
+      <h2 class="serif txt-reveal" data-en="What people say" data-es="Lo que dicen">What people say</h2>
+      <p data-en="Feedback from clients and collaborators I've worked with. Drag or swipe to scroll." data-es="Comentarios de clientes y colaboradores con los que trabajé. Arrastrá para desplazar.">Feedback from clients and collaborators I've worked with. Drag or swipe to scroll.</p>
     </div>
-    <div class="t-grid" id="testimonials-grid"></div>
+    <div class="testimonials-slider" id="testimonials-slider"></div>
   </div>
 </section>
 
@@ -628,17 +443,20 @@ html,body{overflow-x:clip}
 <section id="skills">
   <div class="wrap">
     <div class="section-head reveal">
+      <span class="sec-comment">// stack</span>
       <span class="eyebrow" data-en="Technical Skills" data-es="Habilidades Técnicas">Technical Skills</span>
-      <h2 class="serif" data-en="The toolkit" data-es="Las herramientas">The toolkit</h2>
+      <h2 class="serif txt-reveal" data-en="The toolkit" data-es="Las herramientas">The toolkit</h2>
     </div>
     <div class="skill-grid">
-      <div class="skill-block reveal"><h3 data-en="Programming & Software" data-es="Programación y Software">Programming & Software</h3><div class="chips"><span>C#</span><span>Unity</span><span>REST APIs</span><span>Firebase</span><span>Git</span><span data-en="Automation Systems" data-es="Sistemas de Automatización">Automation Systems</span></div></div>
-      <div class="skill-block reveal"><h3 data-en="AI & Emerging Tech" data-es="IA y Tecnologías Emergentes">AI & Emerging Tech</h3><div class="chips"><span data-en="AI Software Development" data-es="Desarrollo de Software con IA">AI Software Development</span><span data-en="AI Workflow Design" data-es="Diseño de Flujos de IA">AI Workflow Design</span><span data-en="Computer Vision" data-es="Visión por Computadora">Computer Vision</span><span data-en="Generative AI Pipelines" data-es="Pipelines de IA Generativa">Generative AI Pipelines</span><span data-en="Rapid Prototyping" data-es="Prototipado Rápido">Rapid Prototyping</span></div></div>
-      <div class="skill-block reveal"><h3 data-en="3D & Visualization" data-es="3D y Visualización">3D & Visualization</h3><div class="chips"><span>Blender</span><span data-en="Technical Art" data-es="Arte Técnico">Technical Art</span><span data-en="Real-Time Rendering" data-es="Renderizado en Tiempo Real">Real-Time Rendering</span><span>HDRP / URP</span><span data-en="Lighting" data-es="Iluminación">Lighting</span><span data-en="Architectural Viz" data-es="Visualización Arquitectónica">Architectural Viz</span></div></div>
-      <div class="skill-block reveal"><h3 data-en="Creative Tools" data-es="Herramientas Creativas">Creative Tools</h3><div class="chips"><span>After Effects</span><span>Premiere Pro</span><span>Photoshop</span><span>Audition</span></div></div>
+      <div class="skill-block reveal"><h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="16" height="16" aria-hidden="true" style="vertical-align:middle;margin-right:8px"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg><span data-en="Programming & Software" data-es="Programación y Software">Programming & Software</span></h3><div class="chips"><span>C#</span><span>Unity</span><span>REST APIs</span><span>Supabase</span><span>Git</span><span data-en="Automation Systems" data-es="Sistemas de Automatización">Automation Systems</span><span>Python</span><span data-en="Blender Addons" data-es="Addons de Blender">Blender Addons</span></div></div>
+      <div class="skill-block reveal"><h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="16" height="16" aria-hidden="true" style="vertical-align:middle;margin-right:8px"><path d="M12 2a4 4 0 0 1 4 4c0 2-2 3-2 5h-4c0-2-2-3-2-5a4 4 0 0 1 4-4z"/><path d="M12 14v4"/><path d="M8 18h8"/></svg><span data-en="AI & Emerging Tech" data-es="IA y Tecnologías Emergentes">AI & Emerging Tech</span></h3><div class="chips"><span data-en="AI Software Development" data-es="Desarrollo de Software con IA">AI Software Development</span><span data-en="AI Workflow Design" data-es="Diseño de Flujos de IA">AI Workflow Design</span><span data-en="Computer Vision" data-es="Visión por Computadora">Computer Vision</span><span data-en="Generative AI Pipelines" data-es="Pipelines de IA Generativa">Generative AI Pipelines</span><span data-en="Rapid Prototyping" data-es="Prototipado Rápido">Rapid Prototyping</span><span data-en="Vuforia AR" data-es="Vuforia AR">Vuforia AR</span></div></div>
+      <div class="skill-block reveal"><h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="16" height="16" aria-hidden="true" style="vertical-align:middle;margin-right:8px"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg><span data-en="3D & Visualization" data-es="3D y Visualización">3D & Visualization</span></h3><div class="chips"><span>Blender</span><span data-en="Technical Art" data-es="Arte Técnico">Technical Art</span><span data-en="Real-Time Rendering" data-es="Renderizado en Tiempo Real">Real-Time Rendering</span><span>HDRP / URP</span><span data-en="Lighting" data-es="Iluminación">Lighting</span><span data-en="Architectural Viz" data-es="Visualización Arquitectónica">Architectural Viz</span></div></div>
+      <div class="skill-block reveal"><h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="16" height="16" aria-hidden="true" style="vertical-align:middle;margin-right:8px"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg><span data-en="Creative Tools" data-es="Herramientas Creativas">Creative Tools</span></h3><div class="chips"><span>After Effects</span><span>Premiere Pro</span><span>Photoshop</span><span>Audition</span></div></div>
     </div>
   </div>
 </section>
+
+<!-- testimonial timeline consolidated above -->
 
 <!-- INTEREST + OPEN -->
 <section id="contact">
@@ -653,6 +471,8 @@ html,body{overflow-x:clip}
         <li data-en="Computer Vision" data-es="Visión por Computadora">Computer Vision</li>
         <li data-en="Automation Platforms" data-es="Plataformas de Automatización">Automation Platforms</li>
         <li data-en="Real-Time Visualization & Simulation" data-es="Visualización y Simulación en Tiempo Real">Real-Time Visualization & Simulation</li>
+        <li data-en="Blender Addons & Tooling" data-es="Addons y Herramientas de Blender">Blender Addons & Tooling</li>
+        <li data-en="Augmented Reality" data-es="Realidad Aumentada">Augmented Reality</li>
       </ul>
     </div>
     <div class="panel reveal">
@@ -677,43 +497,65 @@ html,body{overflow-x:clip}
       <span class="yt-ic"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M23.5 6.5a3 3 0 0 0-2.1-2.12C19.5 3.86 12 3.86 12 3.86s-7.5 0-9.4.52A3 3 0 0 0 .5 6.5 31.3 31.3 0 0 0 0 12a31.3 31.3 0 0 0 .5 5.5 3 3 0 0 0 2.1 2.12c1.9.52 9.4.52 9.4.52s7.5 0 9.4-.52a3 3 0 0 0 2.1-2.12A31.3 31.3 0 0 0 24 12a31.3 31.3 0 0 0-.5-5.5zM9.6 15.5v-7l6.2 3.5z"/></svg></span>
       <span class="yt-txt">
         <strong data-en="More work on YouTube" data-es="Más trabajos en YouTube">More work on YouTube</strong>
-        <small data-en="A few extra projects and demos on my channel · @lemar3D" data-es="Algunos proyectos y demos extra en mi canal · @lemar3D">A few extra projects and demos on my channel · @lemar3D</small>
+        <small data-en="A few extra projects and demos on my channel — @lemar3D" data-es="Algunos proyectos y demos extra en mi canal — @lemar3D">A few extra projects and demos on my channel — @lemar3D</small>
       </span>
-      <span class="yt-arrow" aria-hidden="true">→</span>
+      <span class="yt-arrow" aria-hidden="true">&rarr;</span>
     </a>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section id="blog">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="sec-comment">// blog</span>
+      <span class="eyebrow" data-en="Blog" data-es="Blog">Blog</span>
+      <h2 class="serif txt-reveal" data-en="Thoughts & notes" data-es="Notas y reflexiones">Thoughts & notes</h2>
+      <p data-en="Things I've learned building software, leading products, and exploring AI." data-es="Cosas que aprendí construyendo software, liderando productos y explorando IA.">Things I've learned building software, leading products, and exploring AI.</p>
+    </div>
+    <div class="blog-grid" id="blog-grid"></div>
   </div>
 </section>
 
 <!-- BOTTOM MARQUEE, all project photos -->
 <section class="marquee-sec" aria-hidden="true">
   <div class="lab" data-en="Project gallery" data-es="Galería de proyectos">Project gallery</div>
-  <div class="marquee">
-    <div class="marquee-row left" data-mq-row="left"></div>
-    <div class="marquee-row right" data-mq-row="right"></div>
+    <div class="marquee">
+    <div class="marquee-row left"><div class="mq-track parallax" data-speed=".35" data-mq-track="left"></div></div>
+    <div class="marquee-row right"><div class="mq-track parallax" data-speed=".5" data-mq-track="right"></div></div>
   </div>
 </section>
 </main>
 
 
+</div>
 <footer>
   <div class="wrap foot">
-    <div class="brand"><img class="foot-photo" src="images/portrait.webp" alt="Leandro Nahuel Marquez" loading="lazy" /><img class="mark" src="images/logo.png" alt="LM logo" /><span>Leandro N. Marquez</span></div>
-    <div class="links">
-      <a href="mailto:nahuelmarquezwork@gmail.com" data-copy-email>nahuelmarquezwork@gmail.com</a>
-      <a href="tel:+543875368656">+54 387 5368656</a>
-      <a href="https://linkedin.com/in/leandro-marquez-it" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="https://upwork.com/freelancers/~014024ca7ade29baed" target="_blank" rel="noopener">Upwork</a>
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="brand"><img class="foot-photo" src="images/portrait.webp" alt="Leandro Nahuel Marquez" loading="lazy" /><img class="mark" src="images/logo.png" alt="LM logo" /><span>Leandro N. Marquez</span></div>
+        <div class="foot-desc" data-en="AI-powered software, computer vision, interactive apps and real-time simulations." data-es="Software impulsado por IA, visión por computadora, aplicaciones interactivas y simulaciones en tiempo real.">AI-powered software, computer vision, interactive apps and real-time simulations.</div>
+      </div>
+      <div class="foot-links">
+        <a href="mailto:nahuelmarquezwork@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="16" height="16" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> nahuelmarquezwork@gmail.com</a>
+        <a href="tel:+543875368656"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="16" height="16" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg> +54 387 5368656</a>
+        <a class="btn-linkedin" href="https://linkedin.com/in/leandro-marquez-it" target="_blank" rel="noopener" style="padding:8px 16px;border-radius:100px;font-size:.85rem;display:inline-flex;align-items:center;gap:8px;text-decoration:none"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5A2.5 2.5 0 1 0 5 8.5a2.5 2.5 0 0 0-.02-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.06 3.77-2.06C20.4 8.64 22 10.6 22 14.1V21h-4v-6.1c0-1.45-.03-3.32-2.02-3.32-2.02 0-2.33 1.58-2.33 3.21V21H9z"/></svg> LinkedIn</a>
+        <a class="btn-upwork" href="https://upwork.com/freelancers/~014024ca7ade29baed" target="_blank" rel="noopener" style="padding:8px 16px;border-radius:100px;font-size:.85rem;display:inline-flex;align-items:center;gap:8px;text-decoration:none"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M18.6 6.15c-1.9 0-3.5 1.3-4.1 3.3-.9-1.4-1.6-3.1-2-4.5H9.4v5.6c0 1.4-.6 2.4-1.8 2.4-1.2 0-1.8-1-1.8-2.4V6.15H3v5.6c0 1.3.4 2.5 1.2 3.3.8.9 1.9 1.3 3 1.3 2.4 0 4-1.8 4-4.4v-.9c.4.8.8 1.6 1.4 2.3l-1.2 5.7h2.8l.9-4.1c.8.5 1.6.8 2.6.8 2.5 0 4.5-2 4.5-5 0-2.9-2-5-4.4-5zm-.1 7.4c-.7 0-1.4-.3-2.1-.8l.2-.8v-.02c.1-.8.6-2.2 2-2.2 1 0 1.9.9 1.9 2 0 1.1-.8 2-2 2z"/></svg> Upwork</a>
+      </div>
+      <div class="foot-top">
+        <a href="#" id="footBackToTop"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="18" height="18" aria-hidden="true"><path d="M18 15l-6-6-6 6"/></svg> <span data-en="Back to top" data-es="Volver arriba">Back to top</span></a>
+      </div>
     </div>
-    <div class="copy">© <span id="year"></span> Leandro N. Marquez, <span data-en="Salta, Argentina" data-es="Salta, Argentina">Salta, Argentina</span></div>
+    <div class="copy">© <span id="year"></span> Leandro N. Marquez, <span data-en="Salta, Argentina" data-es="Salta, Argentina">Salta, Argentina</span>. <span data-en="All rights reserved." data-es="Todos los derechos reservados.">All rights reserved.</span></div>
   </div>
 </footer>
 
-<div class="lightbox" id="lightbox"><span class="close">×</span><img alt="Expanded project image" /></div>
+<div class="lightbox" id="lightbox"><span class="close">&times;</span><img alt="Expanded project image" /></div>
 
 <!-- PROJECT DETAIL MODAL -->
 <div class="modal" id="projectModal" role="dialog" aria-modal="true" aria-label="Project details">
   <div class="modal-box">
-    <button class="modal-close" aria-label="Close">×</button>
+    <button class="modal-close" aria-label="Close">&times;</button>
     <div class="modal-hero"><img id="pm-img" alt="" /><div class="modal-thumbs" id="pm-thumbs"></div></div>
     <div class="modal-body">
       <span class="role" id="pm-role"></span>
@@ -734,301 +576,27 @@ html,body{overflow-x:clip}
   </div>
 </div>
 
-<script>
-(function(){
-  // ---- Language ----
-  var lang = localStorage.getItem("cv-lang") || "en";
-  function applyLang(l){
-    lang = l;
-    document.documentElement.lang = l;
-    document.querySelectorAll("[data-en]").forEach(function(el){
-      var t = el.getAttribute("data-"+l);
-      if(t!=null) el.textContent = t;
-    });
-    document.querySelectorAll(".lang button").forEach(function(b){
-      b.classList.toggle("active", b.getAttribute("data-lang")===l);
-    });
-    localStorage.setItem("cv-lang", l);
-  }
-  document.querySelectorAll(".lang button").forEach(function(b){
-    b.addEventListener("click", function(){ applyLang(b.getAttribute("data-lang")); });
-  });
-  applyLang(lang);
+<!-- BLOG POST MODAL -->
+<div class="modal" id="blogModal" role="dialog" aria-modal="true" aria-label="Blog post">
+  <div class="modal-box">
+    <button class="modal-close" aria-label="Close">&times;</button>
+    <div class="modal-body">
+      <div style="font-size:.78rem;color:var(--faint);letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px" id="bm-date"></div>
+      <h3 class="serif" id="bm-title"></h3>
+      <div style="color:var(--muted);font-size:.82rem;margin-bottom:16px" id="bm-tags"></div>
+      <div id="bm-body" style="color:var(--text);font-size:.98rem;line-height:1.7"></div>
+    </div>
+  </div>
+</div>
 
-  document.getElementById("year").textContent = new Date().getFullYear();
+<button class="back-to-top" aria-label="Back to top" id="backToTop">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
 
-  // ---- Toast + copy email ----
-  var toastEl;
-  function toast(msg){
-    if(!toastEl){ toastEl=document.createElement("div"); toastEl.className="toast"; document.body.appendChild(toastEl); }
-    toastEl.textContent=msg;
-    toastEl.classList.add("show");
-    clearTimeout(toastEl._t);
-    toastEl._t=setTimeout(function(){ toastEl.classList.remove("show"); },2200);
-  }
-  var EMAIL="nahuelmarquezwork@gmail.com";
-  document.querySelectorAll("[data-copy-email]").forEach(function(el){
-    el.addEventListener("click",function(){
-      var msg = lang==="es" ? "Email copiado · abriendo tu correo…" : "Email copied · opening your mail app…";
-      if(navigator.clipboard && navigator.clipboard.writeText){
-        navigator.clipboard.writeText(EMAIL).then(function(){toast(msg);}).catch(function(){toast(lang==="es"?"Email: "+EMAIL:"Email: "+EMAIL);});
-      } else {
-        toast("Email: "+EMAIL);
-      }
-      // keep native mailto behavior (href is mailto:)
-    });
-  });
-
-  // ---- Lightbox refs ----
-  var lb = document.getElementById("lightbox");
-  var lbImg = lb.querySelector("img");
-  function closeLb(){ lb.classList.remove("open"); }
-  lb.addEventListener("click",closeLb);
-  document.addEventListener("keydown",function(e){ if(e.key==="Escape")closeLb(); });
-  function bindLightbox(img){
-    img.addEventListener("click",function(){ lbImg.src=img.src; lbImg.alt=img.alt; lb.classList.add("open"); });
-  }
-
-  // ---- Auto-load extra images by prefix ----
-  // Drop files named "<prefix>-1.webp", "<prefix>-2.webp", ... in /images and
-  // they appear automatically (sequential, stops at the first missing number).
-  function probeExtras(prefix){
-    return new Promise(function(resolve){
-      var found = [], idx = 1, MAX = 40;
-      function tryNext(){
-        if(idx > MAX){ resolve(found); return; }
-        var url = "images/" + prefix + "-" + idx + ".webp";
-        var img = new Image();
-        img.onload = function(){ found.push(url); idx++; tryNext(); };
-        img.onerror = function(){ resolve(found); };
-        img.src = url;
-      }
-      tryNext();
-    });
-  }
-
-  // ---- Carousel init ----
-  function initCarousel(car){
-    var track = car.querySelector(".track");
-    var slides = car.querySelectorAll(".slide");
-    var n = slides.length, i = 0;
-    if(!n) return;
-    var dots = document.createElement("div"); dots.className="dots";
-    var counter = document.createElement("div"); counter.className="counter";
-    car.appendChild(dots); car.appendChild(counter);
-    for(var d=0; d<n; d++){ (function(k){ var b=document.createElement("button"); b.setAttribute("aria-label","Slide "+(k+1)); b.addEventListener("click",function(){go(k)}); dots.appendChild(b); })(d); }
-    function render(){
-      track.style.transform = "translateX(" + (-i*100) + "%)";
-      dots.querySelectorAll("button").forEach(function(b,k){ b.classList.toggle("active",k===i); });
-      counter.textContent = (i+1)+" / "+n;
-    }
-    function go(k){ i=(k+n)%n; render(); }
-    render();
-    car.tabIndex=0;
-    car.addEventListener("keydown",function(e){ if(e.key==="ArrowLeft")go(i-1); if(e.key==="ArrowRight")go(i+1); });
-    var sx=0;
-    car.addEventListener("touchstart",function(e){ sx=e.touches[0].clientX; },{passive:true});
-    car.addEventListener("touchend",function(e){ var dx=e.changedTouches[0].clientX-sx; if(Math.abs(dx)>40){ go(dx<0?i+1:i-1);} });
-    var timer = setInterval(function(){go(i+1)}, 6000);
-    car.addEventListener("mouseenter",function(){clearInterval(timer)});
-    car.addEventListener("mouseleave",function(){ timer=setInterval(function(){go(i+1)},6000); });
-  }
-
-  // ---- Build all carousels (after extras load) then lightbox + marquee ----
-  var carEls = [].slice.call(document.querySelectorAll("[data-carousel]"));
-  Promise.all(carEls.map(function(car){
-    var prefix = car.getAttribute("data-extra");
-    var track = car.querySelector(".track");
-    var label = (car.closest(".project") && car.closest(".project").querySelector("h3"))
-      ? car.closest(".project").querySelector("h3").textContent.trim() : "Project";
-    var job = prefix ? probeExtras(prefix) : Promise.resolve([]);
-    return job.then(function(urls){
-      urls.forEach(function(u, k){
-        var s = document.createElement("div"); s.className = "slide";
-        var im = document.createElement("img"); im.loading = "lazy"; im.src = u;
-        im.alt = label + " image " + (k+1);
-        s.appendChild(im); track.appendChild(s);
-      });
-      initCarousel(car);
-    });
-  })).then(function(){
-    document.querySelectorAll(".carousel .slide img").forEach(bindLightbox);
-    // ---- Bottom marquee (clone project images, no extra base64) ----
-    var srcs = [];
-    document.querySelectorAll(".carousel .slide img").forEach(function(img){ if(img.src) srcs.push({src:img.src,alt:img.alt||""}); });
-    if(srcs.length){
-      var fill = function(row, list){
-        var two = list.concat(list);
-        two.forEach(function(o){ var im=document.createElement("img"); im.loading="lazy"; im.src=o.src; im.alt=o.alt; row.appendChild(im); });
-      };
-      var left = document.querySelector('[data-mq-row="left"]');
-      var right = document.querySelector('[data-mq-row="right"]');
-      if(left) fill(left, srcs);
-      if(right) fill(right, srcs.slice().reverse());
-    }
-  });
-
-  // ---- Colorful tech tags ----
-  var TECH_HUE = {
-    "unity":210,"c#":271,"blender":25,"psx style":315,"firebase":38,"rest apis":150,
-    "ai integrations":280,"unity hdrp":195,"real-time lighting":48,"iluminación en tiempo real":48,
-    "rmv":190,"birefnet lite":260,"rmbg 2.0":340,"modnet":170,"mediapipe":120,
-    "react":193,"typescript":211,"javascript":50,"vite":272,"tailwind css":190,"css":211,"vercel":0,
-    "git":14,"automation systems":160,"sistemas de automatización":160,"after effects":265,
-    "premiere pro":255,"photoshop":205,"audition":140
-  };
-  function techHue(name){
-    var k = name.trim().toLowerCase();
-    if(TECH_HUE[k]!=null) return TECH_HUE[k];
-    var h=0; for(var c=0;c<k.length;c++){ h = k.charCodeAt(c) + ((h<<5)-h); }
-    return Math.abs(h)%360;
-  }
-  function paintTags(scope){
-    (scope||document).querySelectorAll(".tags span,.chips span").forEach(function(s){
-      var hue = techHue(s.textContent);
-      s.style.color = "hsl("+hue+",90%,76%)";
-      s.style.background = "hsla("+hue+",80%,55%,.14)";
-      s.style.boxShadow = "inset 0 0 0 1px hsla("+hue+",80%,62%,.38)";
-    });
-  }
-  paintTags(document);
-
-  // ---- Project detail modal ----
-  var PROJECTS = {
-    between:{
-      role_en:"Developer & Technical Artist", role_es:"Desarrollador y Artista Técnico",
-      title:"Between Songs & Demons",
-      lead_en:"A retro-horror title channelling the grain, fog and limited palette of the PlayStation 1 era. I owned gameplay programming, low-poly asset creation and the technical pipeline that keeps an authentic PSX look running at a stable framerate.",
-      lead_es:"Un título de retro-horror que captura el grano, la niebla y la paleta limitada de la era PlayStation 1. Me encargué de la programación de gameplay, la creación de assets low-poly y el pipeline técnico que mantiene un look PSX auténtico con framerate estable.",
-      feats_en:["Gameplay programming in C# (inventory, interaction, scares)","Hand-made low-poly assets with PSX-style texturing","Vertex jitter, affine mapping and dithering shaders","Atmospheric environment & level design","Performance optimization for a locked retro framerate","Full technical implementation end to end"],
-      feats_es:["Programación de gameplay en C# (inventario, interacción, sustos)","Assets low-poly hechos a mano con texturizado estilo PSX","Shaders de vertex jitter, mapeo afín y dithering","Diseño de entornos y niveles atmosféricos","Optimización para un framerate retro fijo","Implementación técnica completa de punta a punta"],
-      tags:["Unity","C#","Blender","PSX style"],
-      links:[]
-    },
-    alloy:{
-      role_en:"Founder & Lead Developer", role_es:"Fundador y Desarrollador Principal",
-      title:"Alloy, AI Receptionist",
-      lead_en:"A commercial AI receptionist that lives inside WhatsApp. Alloy answers customers, qualifies leads, books appointments and pushes everything into the business CRM, replacing hours of manual front-desk work with automated, on-brand conversations.",
-      lead_es:"Un recepcionista con IA comercial que vive dentro de WhatsApp. Alloy responde clientes, califica leads, agenda turnos y envía todo al CRM del negocio, reemplazando horas de trabajo manual de recepción con conversaciones automatizadas y con identidad de marca.",
-      feats_en:["AI-driven customer conversations on WhatsApp","Automated lead qualification & routing","Appointment scheduling synced to calendars","CRM integration and workflow automation","Analytics dashboard for conversations & conversions","Built and shipped as a real commercial product"],
-      feats_es:["Conversaciones con clientes impulsadas por IA en WhatsApp","Calificación y derivación automática de leads","Agendamiento de turnos sincronizado con calendarios","Integración con CRM y automatización de flujos","Panel de analítica de conversaciones y conversiones","Construido y lanzado como producto comercial real"],
-      tags:["C#","Firebase","REST APIs","AI Integrations"],
-      links:[]
-    },
-    light:{
-      role_en:"Simulation Developer", role_es:"Desarrollador de Simulación",
-      title_en:"Light Pollution Impact Study", title_es:"Estudio de Impacto de Contaminación Lumínica",
-      lead_en:"A real-time environmental simulation that recreates, from accurate topographic and site-plan data, how vehicle headlights from a proposed residential road would spill onto existing homes in Massachusetts at night.",
-      lead_es:"Una simulación ambiental en tiempo real que recrea, a partir de datos topográficos y de planos precisos, cómo las luces de los vehículos de un camino residencial propuesto se proyectarían sobre viviendas existentes en Massachusetts durante la noche.",
-      feats_en:["Real-world terrain rebuilt from topographic data","Physically-based headlight & HDRP lighting","Interactive vehicle paths along the proposed road","Interior and exterior intrusion viewpoints","Submitted as technical evidence to the Plymouth ZBA","Helped communicate environmental impact clearly"],
-      feats_es:["Terreno real reconstruido desde datos topográficos","Iluminación de faros e HDRP basada en física","Recorridos de vehículos interactivos sobre el camino propuesto","Puntos de vista de intrusión interior y exterior","Presentada como evidencia técnica ante el ZBA de Plymouth","Ayudó a comunicar el impacto ambiental con claridad"],
-      tags:["Unity HDRP","Blender","C#","Real-time lighting"],
-      links:[]
-    },
-    videobooth:{
-      role_en:"Lead Software Developer", role_es:"Desarrollador de Software Principal",
-      title:"Background Remover, VideoBooth",
-      lead_en:"A professional desktop app that removes backgrounds from video and image sequences. It combines several state-of-the-art segmentation models into one unified workflow, with a timeline, model selection and precise edge masking for production use.",
-      lead_es:"Una app de escritorio profesional que elimina fondos de videos y secuencias de imágenes. Combina varios modelos de segmentación de última generación en un flujo unificado, con línea de tiempo, selección de modelos y enmascarado de bordes preciso para uso en producción.",
-      feats_en:["Multi-model AI segmentation pipeline","Video and image-sequence background removal","Timeline UI with per-model selection","Precise edge & fine-hair masking","Production-ready commercial desktop deployment","Optimized batch processing"],
-      feats_es:["Pipeline de segmentación con IA multi-modelo","Quitado de fondo en video y secuencias de imágenes","Interfaz con línea de tiempo y selección por modelo","Enmascarado preciso de bordes y cabello fino","Despliegue de escritorio comercial listo para producción","Procesamiento por lotes optimizado"],
-      tags:["RMV","BiRefNet Lite","RMBG 2.0","MODNet","MediaPipe"],
-      links:[]
-    }
-  };
-  var modal = document.getElementById("projectModal");
-  var pmImg = document.getElementById("pm-img"), pmThumbs = document.getElementById("pm-thumbs");
-  var pmRole = document.getElementById("pm-role"), pmTitle = document.getElementById("pm-title"), pmLead = document.getElementById("pm-lead");
-  var pmFeats = document.getElementById("pm-feats"), pmTags = document.getElementById("pm-tags"), pmLinks = document.getElementById("pm-links");
-  function openModal(id){
-    var d = PROJECTS[id]; if(!d) return;
-    var L = lang;
-    pmRole.textContent = d["role_"+L] || d.role_en;
-    pmTitle.textContent = d.title || d["title_"+L] || d.title_en;
-    pmLead.textContent = d["lead_"+L] || d.lead_en;
-    pmFeats.innerHTML = "";
-    (d["feats_"+L] || d.feats_en || []).forEach(function(f){ var li=document.createElement("li"); li.textContent=f; pmFeats.appendChild(li); });
-    pmTags.innerHTML = "";
-    (d.tags||[]).forEach(function(t){ var s=document.createElement("span"); s.textContent=t; pmTags.appendChild(s); });
-    paintTags(pmTags.parentNode);
-    pmLinks.innerHTML = "";
-    (d.links||[]).forEach(function(lk){ var a=document.createElement("a"); a.className="btn btn-ghost"; a.href=lk.url; a.target="_blank"; a.rel="noopener"; a.textContent=lk.label; pmLinks.appendChild(a); });
-    // images from the matching project's carousel
-    var proj = document.querySelector('.project[data-project="'+id+'"]');
-    var imgs = proj ? [].slice.call(proj.querySelectorAll(".carousel .slide img")) : [];
-    pmThumbs.innerHTML = "";
-    if(imgs.length){
-      pmImg.src = imgs[0].src; pmImg.alt = imgs[0].alt || "";
-      imgs.forEach(function(im,k){
-        var t=document.createElement("img"); t.src=im.src; t.alt=im.alt||""; if(k===0)t.className="active";
-        t.addEventListener("click",function(){ pmImg.src=im.src; pmImg.alt=im.alt||"";
-          pmThumbs.querySelectorAll("img").forEach(function(x){x.classList.remove("active")}); t.classList.add("active"); });
-        pmThumbs.appendChild(t);
-      });
-    }
-    modal.classList.add("open"); document.body.style.overflow="hidden";
-  }
-  function closeModal(){ modal.classList.remove("open"); document.body.style.overflow=""; }
-  document.querySelectorAll("[data-detail]").forEach(function(btn){
-    btn.addEventListener("click",function(){ openModal(btn.getAttribute("data-detail")); });
-  });
-  modal.querySelector(".modal-close").addEventListener("click",closeModal);
-  modal.addEventListener("click",function(e){ if(e.target===modal) closeModal(); });
-  document.addEventListener("keydown",function(e){ if(e.key==="Escape") closeModal(); });
-
-  // ---- Testimonials (from testimonials.json) ----
-  var FALLBACK_TESTIMONIALS = [
-    {name:"Add your testimonials",role_en:"Edit testimonials.json",role_es:"Editá testimonials.json",rating:5,
-     text_en:"This section is loaded from testimonials.json. Open that file to add, edit or remove testimonials, no HTML needed.",
-     text_es:"Esta sección se carga desde testimonials.json. Abrí ese archivo para agregar, editar o quitar testimonios, sin tocar HTML."}
-  ];
-  function renderTestimonials(list){
-    var grid = document.getElementById("testimonials-grid");
-    if(!grid) return;
-    grid.innerHTML = "";
-    list.forEach(function(t){
-      var card = document.createElement("div"); card.className="t-card reveal";
-      var q = document.createElement("div"); q.className="t-quote"; q.textContent="\u201C";
-      var rating = Math.max(0, Math.min(5, t.rating||0));
-      var stars = document.createElement("div"); stars.className="t-stars"; stars.textContent = rating ? "\u2605".repeat(rating) : "";
-      var txt = document.createElement("p"); txt.className="t-text";
-      txt.setAttribute("data-en", t.text_en||""); txt.setAttribute("data-es", t.text_es||t.text_en||"");
-      txt.textContent = (lang==="es" ? (t.text_es||t.text_en) : t.text_en) || "";
-      var who = document.createElement("div"); who.className="t-who";
-      var av;
-      if(t.avatar){ av=document.createElement("img"); av.className="t-av"; av.src=t.avatar; av.alt=t.name||""; av.loading="lazy"; }
-      else { av=document.createElement("div"); av.className="t-av ph"; av.textContent=(t.name||"?").trim().charAt(0).toUpperCase(); }
-      var info = document.createElement("div");
-      var nm = document.createElement("div"); nm.className="t-name"; nm.textContent=t.name||"";
-      var rl = document.createElement("div"); rl.className="t-role";
-      rl.setAttribute("data-en", t.role_en||""); rl.setAttribute("data-es", t.role_es||t.role_en||"");
-      rl.textContent = (lang==="es" ? (t.role_es||t.role_en) : t.role_en) || "";
-      info.appendChild(nm); info.appendChild(rl);
-      who.appendChild(av); who.appendChild(info);
-      if(rating) card.appendChild(stars);
-      card.appendChild(q); card.appendChild(txt); card.appendChild(who);
-      grid.appendChild(card);
-    });
-    // re-observe new reveal cards & re-apply language
-    grid.querySelectorAll(".reveal").forEach(function(el){ if(window.__cvIO){ window.__cvIO.observe(el); } else { el.classList.add("in"); } });
-  }
-  fetch("testimonials.json", {cache:"no-store"})
-    .then(function(r){ if(!r.ok) throw 0; return r.json(); })
-    .then(function(data){ renderTestimonials(Array.isArray(data) ? data : (data.testimonials||[])); })
-    .catch(function(){ renderTestimonials(FALLBACK_TESTIMONIALS); });
-
-
-  // ---- Reveal on scroll ----
-  if("IntersectionObserver" in window){
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add("in"); io.unobserve(en.target);} });
-    },{threshold:.12});
-    window.__cvIO = io;
-    document.querySelectorAll(".reveal").forEach(function(el){ io.observe(el); });
-  } else {
-    document.querySelectorAll(".reveal").forEach(function(el){ el.classList.add("in"); });
-  }
-})();
-</script>
+<script src="app.js"></script>
 </body>
 </html>
+
+
+
+
